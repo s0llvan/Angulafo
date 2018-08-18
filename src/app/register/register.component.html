@@ -1,0 +1,29 @@
+<div [hidden]="submitted && valid">
+	<form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+		<div>
+			<label for="name">Username</label>
+			<input type="text" id="name" [(ngModel)]="user.username" name="username" #username="ngModel" minlength="3" maxlength="12" required>
+		</div>
+
+		<div>
+			<label for="password">Password</label>
+			<input type="password" id="password" [(ngModel)]="user.password" name="password" #passwor="ngModel" minlength="8" maxlength="64" required>
+		</div>
+
+		<div>
+			<label for="password_confirmation">Password (confirmation)</label>
+			<input type="password" id="password_confirmation" [(ngModel)]="user.password_confirmation" name="password_confirmation" #password_confirmation="ngModel" minlength="8" maxlength="255" required>
+		</div>
+
+		<div *ngFor="let error of errors">  
+			{{ error.message }}
+		</div>
+
+		<div [hidden]="!success">
+			You've been registered !
+		</div>
+
+		<button type="submit" [disabled]="!registerForm.form.valid">Submit</button>
+
+	</form>
+</div>
