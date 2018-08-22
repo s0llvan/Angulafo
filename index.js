@@ -13,6 +13,7 @@ var bodyParser = require('body-parser');
 
 var app = require('express')(),
 users = require('./server/controllers/users');
+auth = require('./server/controllers/auth');
 
 app.use(bodyParser.json());
 
@@ -23,6 +24,7 @@ app.use(function(req, res, next) {
 });
 
 app.post('/users', users.create);
+app.post('/login', auth.logIn);
 
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), function () {

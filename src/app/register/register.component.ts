@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User }    from '../user';
 import { ApiService } from '../api.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
 	selector: 'app-register',
@@ -19,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
 	private success = false;
 
-	constructor(private apiService: ApiService, private cookieService: CookieService) { }
+	constructor(private apiService: ApiService) { }
 
 	ngOnInit() { }
 
@@ -32,8 +31,6 @@ export class RegisterComponent implements OnInit {
 			(data: any) => {
 				this.success = true;
 				this.errors = [];
-
-				this.cookieService.set('session', data.session);
 			},
 			(data: any) => {
 				if(data.error) {

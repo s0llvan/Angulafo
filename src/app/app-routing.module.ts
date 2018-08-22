@@ -4,10 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent }    from './index/index.component';
 import { PageNotFoundComponent }    from './page-not-found/page-not-found.component';
 import { RegisterComponent }    from './register/register.component';
+import { LoginComponent }    from './login/login.component';
+import { ProfilComponent }    from './profil/profil.component';
+import { AuthGuard }    from './auth-guard.service';
 
 const appRoutes: Routes = [
 { path: '', component: IndexComponent },
+{ path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
 { path: 'register', component: RegisterComponent },
+{ path: 'login', component: LoginComponent },
 { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -16,9 +21,9 @@ const appRoutes: Routes = [
 	RouterModule.forRoot(
 		appRoutes,
 		{
-enableTracing: false, // <-- debugging purposes only
-}
-)
+			enableTracing: false,
+		}
+		)
 	],
 	exports: [
 	RouterModule

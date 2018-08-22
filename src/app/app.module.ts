@@ -9,7 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
-import { CookieService } from 'ngx-cookie-service';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard.service';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
 	declarations: [
@@ -17,6 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 	PageNotFoundComponent,
 	IndexComponent,
 	RegisterComponent,
+	LoginComponent,
+	ProfilComponent,
 	],
 	imports: [
 	BrowserModule,
@@ -26,7 +30,7 @@ import { CookieService } from 'ngx-cookie-service';
 	],
 	providers: [
 	ApiService,
-	CookieService
+	AuthGuard
 	],
 	bootstrap: [AppComponent]
 })

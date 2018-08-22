@@ -7,11 +7,15 @@ import { User } from './user';
 })
 export class ApiService {
 
-	url = 'http://localhost:8000'
+	public apiUrl = 'http://localhost:8000'
 
 	constructor(private http: HttpClient) { }
 
 	public createUser(user: User) {
-		return this.http.post(this.url + '/users', user);
+		return this.http.post(this.apiUrl + '/users', user);
+	}
+
+	public logInUser(user: User) {
+		return this.http.post(this.apiUrl + '/login', user);
 	}
 }
