@@ -11,6 +11,10 @@ export class ApiService {
 
 	constructor(private http: HttpClient) { }
 
+	public showAllCategories() {
+		return this.http.get(this.apiUrl + "/categories");
+	}
+
 	public createUser(user: User) {
 		return this.http.post(this.apiUrl + '/users', user);
 	}
