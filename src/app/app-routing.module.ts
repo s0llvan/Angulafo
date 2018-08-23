@@ -14,13 +14,17 @@ import { ShowTopicComponent } from './show-topic/show-topic.component';
 
 const appRoutes: Routes = [
 { path: '', component: IndexComponent },
+{ path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
+// Categories
 { path: 'categories/:id/new-topic', component: NewTopicComponent, canActivate: [AuthGuard] },
 { path: 'categories/:id', component: CategoryComponent },
+// Topics
 { path: 'topics/:id/edit', component: EditTopicComponent, canActivate: [AuthGuard] },
 { path: 'topics/:id', component: ShowTopicComponent },
-{ path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
+// Authentification
 { path: 'register', component: RegisterComponent },
 { path: 'login', component: LoginComponent },
+// Errors
 { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -19,7 +19,8 @@ module.exports= {
 		User.find({
 			where: {
 				[Op.and]: [{username: user.username}, {password: user.password}]
-			}
+			},
+			attributes: { include: ['id','username'] }
 		}).then(user => {
 
 			if(user) {
@@ -30,11 +31,9 @@ module.exports= {
 					{ where: { id: user.id } }
 					)
 				.then(result => {
-					res.status(200).json({
-						'id': user.id,
-						'username': user.username,
-						'session': session
-					})
+					user.session = session;
+
+					res.status(200).json(user)
 				})
 				.catch(err => {
 					res.status(400).json(err)

@@ -18,6 +18,10 @@ export class IndexComponent implements OnInit {
 
 	ngOnInit() {
 
+		this.showAllCategories();
+	}
+
+	showAllCategories(): void {
 		this.apiService.showAllCategories()
 		.subscribe(
 			(data: Category[]) => {

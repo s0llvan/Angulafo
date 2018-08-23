@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
 		});
 	}
 
-	showCategory(id: Int32Array) {
+	showCategory(id: Int32Array): void {
 		this.apiService.showCategory(id)
 		.subscribe(
 			(data: Category) => {

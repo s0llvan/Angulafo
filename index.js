@@ -23,9 +23,27 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
 	next();
+});
+
+app.post('/users', users.create);
+app.post('/login', auth.logIn);
+
+// Categories routes
+app.get('/categories', categories.showAll);
+app.get('/categories/:id', categories.show);
+
+// Topics routes
+app.get('/topics/:id', topics.show);
+app.put('/topics', checkUser, topics.edit);
+app.post('/topics', checkUser, topics.create);
+
+app.set('port', process.env.PORT || 8000);
+app.listen(app.get('port'), function () {
+	console.log("Magic happens on port", app.get('port'));
 });
 
 function checkUser(req, res, next) {
@@ -47,16 +65,3 @@ function checkUser(req, res, next) {
 		});
 	}
 };
-
-app.post('/users', users.create);
-app.post('/login', auth.logIn);
-app.get('/categories', categories.showAll);
-app.get('/categories/:id', categories.show);
-app.post('/categories/:id', checkUser, topics.create);
-app.get('/topics/:id', topics.show);
-app.post('/topics', checkUser, topics.edit);
-
-app.set('port', process.env.PORT || 8000);
-app.listen(app.get('port'), function () {
-	console.log("Magic happens on port", app.get('port'));
-});

@@ -38,7 +38,7 @@ export class EditTopicComponent implements OnInit {
 			);
 	}
 
-	onSubmit() {
+	onSubmit(): void {
 
 		this.submitted = true;
 

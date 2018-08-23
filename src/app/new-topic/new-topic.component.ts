@@ -10,30 +10,28 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class NewTopicComponent implements OnInit {
 
-	private topic: Topic = new Topic(null, null, null, null);
+	private topic: Topic = new Topic(null, null, null, null, null);
 
 	private submitted: boolean = false;
 	private errors: Array<Object> = [];
-
-	private categoryId: Int32Array;
 
 	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 
 		this.route.params.subscribe(params => {
-			this.categoryId = params.id;
+			this.topic.categoryId = params.id;
 		});
 	}
 
-	onSubmit() {
+	onSubmit(): void {
 
 		this.submitted = true;
 
-		this.apiService.createTopic(this.categoryId ,this.topic)
+		this.apiService.createTopic(this.topic)
 		.subscribe(
 			(data: any) => {
-				this.router.navigate(['/categories', this.categoryId]);
+				this.router.navigate(['/categories', this.topic.categoryId]);
 			},
 			(data: any) => {
 				if(Array.isArray(data.error)) {

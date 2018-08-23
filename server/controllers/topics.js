@@ -15,14 +15,10 @@ module.exports= {
 
 		var topic = req.body;
 
-		var categoryId = req.params.id;
-
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
 			topic.authorId = user.id;
-
-			topic.categoryId = categoryId;
 
 			Topic.create(topic).then(topic => {
 				res.status(200).json(topic);
@@ -37,8 +33,6 @@ module.exports= {
 		var token = req.get('Authorization');
 
 		var topic = req.body;
-
-		var categoryId = req.params.id;
 
 		User.find({ where: {
 			'session': token

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() { }
 
-	onSubmit() {
+	onSubmit(): void {
 
 		this.errors = [];
 		this.submitted = true;
