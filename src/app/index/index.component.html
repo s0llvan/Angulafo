@@ -1,8 +1,10 @@
 <div>
 	<div *ngFor="let category of categories">
 		<div class="category">
-			<h3 class="title">{{ category.title }}</h3>
+			<h3 class="title" [routerLink]="['/categories', category.id]">{{ category.title }}</h3>
 			<p class="description">{{ category.description }}</p>
+
+			<p class="topics">{{ category.Topics.length }} Topics</p>
 		</div>
 	</div>
 </div>

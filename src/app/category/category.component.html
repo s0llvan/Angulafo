@@ -1,0 +1,11 @@
+<div *ngIf="category">
+	<h3>{{ category.title }}</h3>
+
+	<p>{{ category.description }}</p>
+
+
+	<div *ngFor="let topic of category.Topics">
+		<p>{{ topic.title }}</p>
+		<p>by {{ topic.User.username }}</p>
+	</div>
+</div>

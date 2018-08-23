@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Category }    from '../category';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-index',
@@ -11,7 +12,9 @@ export class IndexComponent implements OnInit {
 
 	private categories: Category[];
 
-	constructor(private apiService: ApiService) { }
+	constructor(private apiService: ApiService, private router: Router) {
+		this.categories = [];
+	}
 
 	ngOnInit() {
 
@@ -22,7 +25,7 @@ export class IndexComponent implements OnInit {
 			},
 			(data: any) => {
 				if(data.error) {
-					
+					alert('An error was occured, please try again later !');
 				}
 			}
 			);

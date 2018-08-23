@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
 		description: DataTypes.STRING
 	}, {});
 	Category.associate = function(models) {
-		
+		Category.hasMany(models.Topic, {
+			foreignKey: 'categoryId',
+			onDelete: 'CASCADE'
+		});
 	};
 	return Category;
 };

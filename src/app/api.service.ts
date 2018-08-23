@@ -11,6 +11,10 @@ export class ApiService {
 
 	constructor(private http: HttpClient) { }
 
+	public showCategory(id: Int32Array) {
+		return this.http.get(this.apiUrl + "/categories/" + id);
+	}
+
 	public showAllCategories() {
 		return this.http.get(this.apiUrl + "/categories");
 	}

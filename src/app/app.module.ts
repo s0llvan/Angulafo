@@ -12,6 +12,7 @@ import { ApiService } from './api.service';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.service';
 import { ProfilComponent } from './profil/profil.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
 	declarations: [
@@ -21,6 +22,7 @@ import { ProfilComponent } from './profil/profil.component';
 	RegisterComponent,
 	LoginComponent,
 	ProfilComponent,
+	CategoryComponent,
 	],
 	imports: [
 	BrowserModule,

@@ -7,9 +7,11 @@ import { RegisterComponent }    from './register/register.component';
 import { LoginComponent }    from './login/login.component';
 import { ProfilComponent }    from './profil/profil.component';
 import { AuthGuard }    from './auth-guard.service';
+import { CategoryComponent } from './category/category.component';
 
 const appRoutes: Routes = [
 { path: '', component: IndexComponent },
+{ path: 'categories/:id', component: CategoryComponent },
 { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
 { path: 'register', component: RegisterComponent },
 { path: 'login', component: LoginComponent },
