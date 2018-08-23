@@ -1,0 +1,19 @@
+<div>
+	<form #newTopicForm="ngForm" (ngSubmit)="onSubmit()">
+		<div>
+			<label for="title">Title</label>
+			<input type="text" id="title" [(ngModel)]="topic.title" name="title" #title="ngModel" minlength="5" maxlength="32" required>
+		</div>
+
+		<div>
+			<label for="message">Message</label>
+			<textarea id="message" [(ngModel)]="topic.message" name="message" #title="ngModel" required></textarea>
+		</div>
+
+		<div *ngFor="let error of errors">  
+			{{ error.message }}
+		</div>
+
+		<button type="submit" [disabled]="!newTopicForm.form.valid">Submit</button>
+	</form>
+</div>

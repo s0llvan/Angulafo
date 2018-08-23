@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.service';
 import { ProfilComponent } from './profil/profil.component';
 import { CategoryComponent } from './category/category.component';
+import { NewTopicComponent } from './new-topic/new-topic.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,7 @@ import { CategoryComponent } from './category/category.component';
 	LoginComponent,
 	ProfilComponent,
 	CategoryComponent,
+	NewTopicComponent,
 	],
 	imports: [
 	BrowserModule,

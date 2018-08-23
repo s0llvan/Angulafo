@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../category';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
 	selector: 'app-category',
@@ -12,7 +13,7 @@ export class CategoryComponent implements OnInit {
 
 	private category: Category;
 
-	constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+	constructor(private apiService: ApiService, private route: ActivatedRoute, private authService: AuthService) { }
 
 	ngOnInit() {
 

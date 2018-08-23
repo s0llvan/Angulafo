@@ -30,6 +30,7 @@ export class AuthService {
 		.pipe(map((data: any) => {
 			this.isLoggedIn = true;
 			this.user = data;
+			this.apiService.apiToken = data.session;
 		}))
 		.toPromise();
 	}

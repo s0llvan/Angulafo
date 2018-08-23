@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { Topic } from './topic';
 
 @Injectable({
 	providedIn: 'root'
@@ -8,6 +9,7 @@ import { User } from './user';
 export class ApiService {
 
 	public apiUrl = 'http://localhost:8000'
+	public apiToken: string;
 
 	constructor(private http: HttpClient) { }
 
@@ -17,6 +19,14 @@ export class ApiService {
 
 	public showAllCategories() {
 		return this.http.get(this.apiUrl + "/categories");
+	}
+
+	public createTopic(id: Int32Array, topic: Topic) {
+		return this.http.post(this.apiUrl + "/categories/" + id, topic, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
 	}
 
 	public createUser(user: User) {

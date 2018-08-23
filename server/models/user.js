@@ -25,8 +25,6 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: true,
 			unique: true
 		}
-	}, {
-		underscored: true,
 	});
 	User.associate = function(models) {
 		User.hasMany(models.Topic, {
