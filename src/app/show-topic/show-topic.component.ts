@@ -40,6 +40,10 @@ export class ShowTopicComponent implements OnInit {
 	}
 
 	owner(): boolean {
-		return this.authService.user ? this.topic.authorId == this.authService.user.id : false;
+		return this.is_logged() ? this.topic.authorId == this.authService.user.id : false;
+	}
+
+	is_logged(): boolean {
+		return this.authService.isLoggedIn;
 	}
 }

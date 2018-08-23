@@ -16,6 +16,7 @@ users = require('./server/controllers/users');
 auth = require('./server/controllers/auth');
 categories = require('./server/controllers/categories');
 topics = require('./server/controllers/topics');
+posts = require('./server/controllers/posts');
 
 User = require('./server/models/').User;
 
@@ -40,6 +41,9 @@ app.get('/categories/:id', categories.show);
 app.get('/topics/:id', topics.show);
 app.put('/topics', checkUser, topics.edit);
 app.post('/topics', checkUser, topics.create);
+
+// Posts routes
+app.post('/posts', checkUser, posts.create);
 
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), function () {

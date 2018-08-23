@@ -1,0 +1,14 @@
+<div>
+	<form #newPostForm="ngForm" (ngSubmit)="onSubmit()">
+		<div>
+			<label for="message">Message</label>
+			<textarea id="message" [(ngModel)]="post.message" name="message" #title="ngModel" required></textarea>
+		</div>
+
+		<div *ngFor="let error of errors">  
+			{{ error.message }}
+		</div>
+
+		<button type="submit" [disabled]="!newPostForm.form.valid">Submit</button>
+	</form>
+</div>

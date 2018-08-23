@@ -16,6 +16,7 @@ import { CategoryComponent } from './category/category.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
 import { EditTopicComponent } from './edit-topic/edit-topic.component';
 import { ShowTopicComponent } from './show-topic/show-topic.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
 	declarations: [
@@ -29,6 +30,7 @@ import { ShowTopicComponent } from './show-topic/show-topic.component';
 	NewTopicComponent,
 	EditTopicComponent,
 	ShowTopicComponent,
+	NewPostComponent,
 	],
 	imports: [
 	BrowserModule,

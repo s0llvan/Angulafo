@@ -6,4 +6,12 @@
 	<p>{{ topic.message }}</p>
 
 	<p *ngIf="owner()" [routerLink]="['/topics', topic.id, 'edit']">Edit</p>
+
+	<div *ngFor="let post of topic.Posts">
+		<p>{{ post.message }}</p>
+
+		<p>by {{ post.User.username }}</p>
+	</div>
+
+	<p *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">New post</p>
 </div>

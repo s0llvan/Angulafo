@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { Topic } from './topic';
 import { Observable } from 'rxjs';
+import { Post } from './post';
 
 @Injectable({
 	providedIn: 'root'
@@ -40,6 +41,14 @@ export class ApiService {
 
 	public showTopic(id: Int32Array): Observable<Object> {
 		return this.http.get(this.apiUrl + "/topics/" + id);
+	}
+
+	public createPost(post: Post): Observable<Object> {
+		return this.http.post(this.apiUrl + "/posts", post, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
 	}
 
 	public createUser(user: User): Observable<Object> {

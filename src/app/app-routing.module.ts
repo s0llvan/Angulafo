@@ -11,6 +11,7 @@ import { CategoryComponent } from './category/category.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
 import { EditTopicComponent } from './edit-topic/edit-topic.component';
 import { ShowTopicComponent } from './show-topic/show-topic.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 const appRoutes: Routes = [
 { path: '', component: IndexComponent },
@@ -21,6 +22,8 @@ const appRoutes: Routes = [
 // Topics
 { path: 'topics/:id/edit', component: EditTopicComponent, canActivate: [AuthGuard] },
 { path: 'topics/:id', component: ShowTopicComponent },
+// Posts
+{ path: 'topics/:id/new-post', component: NewPostComponent, canActivate: [AuthGuard] },
 // Authentification
 { path: 'register', component: RegisterComponent },
 { path: 'login', component: LoginComponent },

@@ -6,6 +6,7 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 Topic = require('../models/').Topic;
+Post = require('../models/').Post;
 
 module.exports= {
 
@@ -62,14 +63,19 @@ module.exports= {
 
 		var topicId = req.params.id;
 
-		console.log(topicId);
-
 		Topic.findOne({
 			where: { id: topicId },
-			include: {
+			include: [{
 				model: User,
 				attributes: ['username']
-			}
+			}, {
+				model: Post,
+				attributes: ['message'],
+				include: {
+					model: User,
+					attributes: ['username']
+				}
+			}]
 		}).then(topic => {
 			res.status(200).json(topic);
 		}).catch((err) => {
