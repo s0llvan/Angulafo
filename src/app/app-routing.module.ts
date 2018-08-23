@@ -9,11 +9,15 @@ import { ProfilComponent }    from './profil/profil.component';
 import { AuthGuard }    from './auth-guard.service';
 import { CategoryComponent } from './category/category.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
+import { EditTopicComponent } from './edit-topic/edit-topic.component';
+import { ShowTopicComponent } from './show-topic/show-topic.component';
 
 const appRoutes: Routes = [
 { path: '', component: IndexComponent },
 { path: 'categories/:id/new-topic', component: NewTopicComponent, canActivate: [AuthGuard] },
 { path: 'categories/:id', component: CategoryComponent },
+{ path: 'topics/:id/edit', component: EditTopicComponent, canActivate: [AuthGuard] },
+{ path: 'topics/:id', component: ShowTopicComponent },
 { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
 { path: 'register', component: RegisterComponent },
 { path: 'login', component: LoginComponent },

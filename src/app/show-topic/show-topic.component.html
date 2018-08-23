@@ -1,0 +1,9 @@
+<div>
+	<h3>{{ topic.title }}</h3>
+
+	<p *ngIf="topic.User">by {{ topic.User.username }}</p>
+
+	<p>{{ topic.message }}</p>
+
+	<p *ngIf="owner()" [routerLink]="['/topics', topic.id, 'edit']">Edit</p>
+</div>

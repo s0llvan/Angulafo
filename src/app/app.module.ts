@@ -14,6 +14,8 @@ import { AuthGuard } from './auth-guard.service';
 import { ProfilComponent } from './profil/profil.component';
 import { CategoryComponent } from './category/category.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
+import { EditTopicComponent } from './edit-topic/edit-topic.component';
+import { ShowTopicComponent } from './show-topic/show-topic.component';
 
 @NgModule({
 	declarations: [
@@ -25,6 +27,8 @@ import { NewTopicComponent } from './new-topic/new-topic.component';
 	ProfilComponent,
 	CategoryComponent,
 	NewTopicComponent,
+	EditTopicComponent,
+	ShowTopicComponent,
 	],
 	imports: [
 	BrowserModule,

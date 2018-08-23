@@ -24,6 +24,7 @@ export class AuthService {
 
 	public logIn(username: string, password: string):Promise<any> {
 		return this.apiService.logInUser({
+			'id': null,
 			'username': username,
 			'password': password
 		})

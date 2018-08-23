@@ -29,6 +29,18 @@ export class ApiService {
 		});
 	}
 
+	public editTopic(topic: Topic) {
+		return this.http.post(this.apiUrl + "/topics", topic, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public showTopic(id: Int32Array) {
+		return this.http.get(this.apiUrl + "/topics/" + id);
+	}
+
 	public createUser(user: User) {
 		return this.http.post(this.apiUrl + '/users', user);
 	}

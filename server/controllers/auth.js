@@ -31,6 +31,7 @@ module.exports= {
 					)
 				.then(result => {
 					res.status(200).json({
+						'id': user.id,
 						'username': user.username,
 						'session': session
 					})

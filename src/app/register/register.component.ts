@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class RegisterComponent implements OnInit {
 
-	private user = new User(null, null);
+	private user = new User(null, null, null);
 	private userForm: any;
 
 	private submitted = false;

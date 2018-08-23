@@ -6,7 +6,7 @@
 	<a *ngIf="authService.isLoggedIn" [routerLink]="['/categories', category.id, 'new-topic']">New topic</a>
 
 	<div *ngFor="let topic of category.Topics">
-		<p>{{ topic.title }}</p>
+		<p [routerLink]="['/topics', topic.id]">{{ topic.title }}</p>
 		<p *ngIf="topic.User">by {{ topic.User.username }}</p>
 	</div>
 </div>

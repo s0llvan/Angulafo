@@ -53,6 +53,8 @@ app.post('/login', auth.logIn);
 app.get('/categories', categories.showAll);
 app.get('/categories/:id', categories.show);
 app.post('/categories/:id', checkUser, topics.create);
+app.get('/topics/:id', topics.show);
+app.post('/topics', checkUser, topics.edit);
 
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), function () {
