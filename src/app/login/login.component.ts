@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-	private user = new User(null, null, null);
+	private user: User = new User(null, null, null);
 	private userForm: any;
 
 	private submitted = false;
-	private errors = [];
+	private errors: Array<string> = [];
 
 	constructor(private authService: AuthService, private router: Router) { }
 

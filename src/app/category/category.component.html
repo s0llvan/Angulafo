@@ -1,12 +1,62 @@
+<h2 class="ui header">Forum</h2>
+
 <div *ngIf="category">
-	<h3>{{ category.title }}</h3>
+	<h4 class="ui top attached header inverted">
+		{{ category.title }}
+	</h4>
 
-	<p>{{ category.description }}</p>
+	<div class="ui attached segment">
+		<div class="ui grid stackable" *ngFor="let topic of category.Topics">
+			<div class="one wide column middle aligned">
+				<div class="ui fluid image small">
+					<img src="assets/square-image.png">
+				</div>
+			</div>
+			<div class="six wide column">
+				<div class="row">
+					<a [routerLink]="['/topics', topic.id]">
+						{{ topic.title| slice:0:50 }}<span *ngIf="topic.title.length > 50">...</span>
+					</a>
+				</div>
+				<div class="row">
+					{{ topic.createdAt | date:'H:s, dd/MM/yyyy' }}
+				</div>
+				<div class="row" *ngIf="topic.User">
+					{{ topic.User.username }}
+				</div>
+			</div>
+			<div class="two wide column middle aligned">
+				<div class="row">0</div>
+				<div class="row">
+					<b>Views</b>
+				</div>
+			</div>
+			<div class="four wide column middle aligned">
+				<div class="row">{{ topic.Posts.length }}</div>
+				<div class="row">
+					<b>Posts</b>
+				</div>
+			</div>
+			<div class="three wide column right aligned middle aligned">
+				<div class="row">
+					<b *ngIf="topic.Posts.length > 0">
+						<div *ngIf="topic.Posts[topic.Posts.length - 1 ].User">
+							{{ topic.Posts[topic.Posts.length - 1 ].User.username }}
+						</div>
+					</b>
+				</div>
+				<div class="row" *ngIf="topic.Posts.length > 0">
+					{{ topic.Posts[topic.Posts.length-1].createdAt | date:'H:s, dd/MM/yyyy' }}
+				</div>
+			</div>
+		</div>
 
-	<a *ngIf="authService.isLoggedIn" [routerLink]="['/categories', category.id, 'new-topic']">New topic</a>
-
-	<div *ngFor="let topic of category.Topics">
-		<p [routerLink]="['/topics', topic.id]">{{ topic.title }}</p>
-		<p *ngIf="topic.User">by {{ topic.User.username }}</p>
+		<div class="ui grid stackable" *ngIf="authService.isLoggedIn">
+			<div class="sixteen wide column">
+				<button class="ui button right floated" [routerLink]="['/categories', category.id, 'new-topic']">
+					New topic
+				</button>
+			</div>
+		</div>
 	</div>
 </div>

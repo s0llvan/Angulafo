@@ -12,7 +12,18 @@ module.exports= {
 	showAll(req, res) {
 		
 		Category.findAll({
-			include: Topic
+			include: {
+				model: Topic,
+				include: [
+				{ model: User, attributes: ['username'] },
+				{
+					model: Post, attributes: ['message','createdAt'], required: false,
+					include: [
+					{ model: User, attributes: ['username'] },
+					]
+				}
+				]
+			}
 		}).then(categories => {
 			res.status(200).json(categories);
 		}).catch((err) => {
@@ -29,7 +40,13 @@ module.exports= {
 			include: {
 				model: Topic,
 				include: [
-				{ model: User, attributes: ['username'] }
+				{ model: User, attributes: ['username'] },
+				{
+					model: Post, attributes: ['message','createdAt'], required: false,
+					include: [
+					{ model: User, attributes: ['username'] },
+					]
+				}
 				]
 			}
 		}).then(category => {

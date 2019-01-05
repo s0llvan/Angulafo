@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Category }    from '../category';
+import { Category } from '../category';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,15 +23,15 @@ export class IndexComponent implements OnInit {
 
 	showAllCategories(): void {
 		this.apiService.showAllCategories()
-		.subscribe(
-			(data: Category[]) => {
-				this.categories = data;
-			},
-			(data: any) => {
-				if(data.error) {
-					alert('An error was occured, please try again later !');
+			.subscribe(
+				(data: Category[]) => {
+					this.categories = data;
+				},
+				(data: any) => {
+					if (data.error) {
+						alert('An error was occured, please try again later !');
+					}
 				}
-			}
 			);
 	}
 }

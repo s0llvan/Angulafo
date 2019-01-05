@@ -1,19 +1,29 @@
-<div>
-	<form #newTopicForm="ngForm" (ngSubmit)="onSubmit()">
-		<div>
-			<label for="title">Title</label>
-			<input type="text" id="title" [(ngModel)]="topic.title" name="title" #title="ngModel" minlength="5" maxlength="32" required>
-		</div>
+<h2 class="ui header">Forum</h2>
 
-		<div>
-			<label for="message">Message</label>
-			<textarea id="message" [(ngModel)]="topic.message" name="message" #title="ngModel" required></textarea>
-		</div>
+<div *ngIf="category">
+	<h4 class="ui top attached header inverted">
+		{{ category.name }}
+	</h4>
 
-		<div *ngFor="let error of errors">  
-			{{ error.message }}
-		</div>
+	<div class="ui attached segment">
+		<div class="ui form">
+			<form #newTopicForm="ngForm" (ngSubmit)="onSubmit()">
+				<div class="field">
+					<label for="title">Title</label>
+					<input type="text" id="title" [(ngModel)]="topic.title" name="title" #title="ngModel" minlength="5" maxlength="32" required>
+				</div>
 
-		<button type="submit" [disabled]="!newTopicForm.form.valid">Submit</button>
-	</form>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea id="message" [(ngModel)]="topic.message" name="message" #title="ngModel" required></textarea>
+				</div>
+
+				<div *ngFor="let error of errors">  
+					{{ error.message }}
+				</div>
+
+				<button type="submit" class="ui button" [disabled]="!newTopicForm.form.valid">Submit</button>
+			</form>
+		</div>
+	</div>
 </div>

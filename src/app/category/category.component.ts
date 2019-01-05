@@ -24,15 +24,15 @@ export class CategoryComponent implements OnInit {
 
 	showCategory(id: Int32Array): void {
 		this.apiService.showCategory(id)
-		.subscribe(
-			(data: Category) => {
-				this.category = data;
-			},
-			(data: any) => {
-				if(data.error) {
-					alert('An error was occured, please try again later !');
+			.subscribe(
+				(data: Category) => {
+					this.category = data;
+				},
+				(data: any) => {
+					if (data.error) {
+						alert('An error was occured, please try again later !');
+					}
 				}
-			}
 			);
 	}
 }

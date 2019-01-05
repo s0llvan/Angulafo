@@ -1,18 +1,19 @@
+var bodyParser = require('body-parser')
+
 var models = require('./server/models/');
 
 models.sequelize
-.authenticate()
-.then(function () {
-	console.log('Connection successful');
-})
-.catch(function(error) {
-	console.log("Error creating connection:", error);
-});
+	.authenticate()
+	.then(function () {
+		console.log('Connection successful');
+	})
+	.catch(function (error) {
+		console.log("Error creating connection:", error);
+	});
 
-var bodyParser = require('body-parser');
 
 var app = require('express')(),
-users = require('./server/controllers/users');
+	users = require('./server/controllers/users');
 auth = require('./server/controllers/auth');
 categories = require('./server/controllers/categories');
 topics = require('./server/controllers/topics');
@@ -22,7 +23,7 @@ User = require('./server/models/').User;
 
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -53,13 +54,15 @@ app.listen(app.get('port'), function () {
 function checkUser(req, res, next) {
 
 	var token = req.get('Authorization');
-	if((token = req.get('Authorization')) == undefined) {
+	if ((token = req.get('Authorization')) == undefined) {
 		res.status(401).json({});
 	} else {
-		User.find({ where: {
-			'session': token
-		}}).then(user => {
-			if(user) {
+		User.find({
+			where: {
+				'session': token
+			}
+		}).then(user => {
+			if (user) {
 				next();
 			} else {
 				res.status(401).json({});

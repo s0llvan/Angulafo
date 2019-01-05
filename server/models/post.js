@@ -1,9 +1,31 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 	var Post = sequelize.define('Post', {
-		message: DataTypes.TEXT,
-		topicId: DataTypes.INTEGER,
-		authorId: DataTypes.INTEGER
+		message: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+			validate: {
+				isAlphanumeric: true,
+				notEmpty: true,
+				len: [3,512]
+			}
+		},
+		topicId: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isInt: true,
+				notEmpty: true,
+			}
+		},
+		authorId: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isInt: true,
+				notEmpty: true,
+			}
+		}
 	}, {});
 	Post.associate = function(models) {
 		Post.belongsTo(models.Topic, {

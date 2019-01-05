@@ -1,20 +1,37 @@
-<div>
-	<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-		<div>
-			<label for="name">Username</label>
-			<input type="text" id="name" [(ngModel)]="user.username" name="username" #username="ngModel" minlength="3" maxlength="12" required>
+<div class="ui middle aligned center aligned grid">
+	<div class="column">
+		<h2 class="ui image header">
+			<div class="content">
+				Sign In
+			</div>
+		</h2>
+		<form class="ui large form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+			<div class="ui stacked segment left aligned">
+				<div class="field">
+					<label for="name">Username</label>
+					<div class="ui left icon input">
+						<i class="user icon"></i>
+						<input type="text" id="name" [(ngModel)]="user.username" name="username" #username="ngModel" minlength="3" maxlength="12" required>
+					</div>
+				</div>
+				<div class="field">
+					<label for="password">Password</label>
+					<div class="ui left icon input">
+						<i class="lock icon"></i>
+						<input type="password" id="password" [(ngModel)]="user.password" name="password" #passwor="ngModel" minlength="8" maxlength="64" required>
+					</div>
+				</div>
+				<div class="ui error message" [class.visible]="errors.length">
+					<p *ngFor="let error of errors">
+						{{ error }}
+					</p>
+				</div>
+				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid">Log in</button>
+			</div>
+		</form>
+
+		<div class="ui message">
+			<a routerLink="/register" class="left aligned">Register</a>
 		</div>
-
-		<div>
-			<label for="password">Password</label>
-			<input type="password" id="password" [(ngModel)]="user.password" name="password" #passwor="ngModel" minlength="8" maxlength="64" required>
-		</div>
-
-		<div *ngFor="let error of errors">  
-			{{ error }}
-		</div>
-
-		<button type="submit" [disabled]="!loginForm.form.valid">Log in</button>
-
-	</form>
+	</div>
 </div>

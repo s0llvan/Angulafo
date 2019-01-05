@@ -1,10 +1,55 @@
-<div>
-	<div *ngFor="let category of categories">
-		<div class="category">
-			<h3 class="title" [routerLink]="['/categories', category.id]">{{ category.title }}</h3>
-			<p class="description">{{ category.description }}</p>
+<h2 class="ui header">Forum</h2>
 
-			<p class="topics">{{ category.Topics.length }} Topics</p>
+<h4 class="ui top attached header inverted">
+	<div class="ui grid stackable">
+		<div class="three wide column">
+			Parent Category #1
+		</div>
+	</div>
+</h4>
+<div class="ui attached segment">
+	<div class="ui grid stackable" *ngFor="let category of categories">
+		<div class="two wide column">
+			<div class="ui fluid image tiny">
+				<img src="assets/square-image.png">
+			</div>
+		</div>
+		<div class="four wide column">
+			<div class="row">
+				<h5>
+					<a [routerLink]="['/categories', category.id]">{{ category.title }}</a>
+				</h5>
+			</div>
+			<div class="row">
+				{{ category.description| slice:0:60 }}<span *ngIf="category.description.length > 60">...</span>
+			</div>
+		</div>
+		<div class="one wide column"></div>
+		<div class="sixteen wide mobile eight wide tablet three wide computer column">
+			<div class="row">{{ category.Topics.length }}</div>
+			<div class="row">Topics</div>
+		</div>
+		<div class="sixteen wide mobile eight wide tablet three wide computer column">
+			<div class="row">0</div>
+			<div class="row">Messages</div>
+		</div>
+		<div class="three wide column right aligned">
+			<div *ngIf="category.Topics.length > 0">
+				<div class="row">
+					<b [routerLink]="['/topics', category.Topics[category.Topics.length - 1].id]">{{
+						category.Topics[category.Topics.length - 1].title }}</b>
+				</div>
+				<div class="row" *ngIf="category.Topics[category.Topics.length - 1].Posts.length > 0">{{
+					category.Topics[category.Topics.length - 1].Posts[category.Topics[category.Topics.length - 1].Posts.length -
+					1].createdAt|date:'fullDate' }}</div>
+				<div class="row" *ngIf="category.Topics[category.Topics.length - 1].Posts.length <= 0">{{
+					category.Topics[category.Topics.length - 1].createdAt|date:'fullDate' }}</div>
+				<div class="row" *ngIf="category.Topics[category.Topics.length - 1].Posts.length > 0">{{
+					category.Topics[category.Topics.length - 1].Posts[category.Topics[category.Topics.length - 1].Posts.length -
+					1].User.username }}</div>
+				<div class="row" *ngIf="category.Topics[category.Topics.length - 1].Posts.length <= 0">{{
+					category.Topics[category.Topics.length - 1].User.username }}</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,10 +1,26 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 	var Topic = sequelize.define('Topic', {
-		title: DataTypes.STRING,
-		message: DataTypes.TEXT,
+		title: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				isAlphanumeric: true,
+				notEmpty: true,
+				len: [3, 32]
+			}
+		},
+		message: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+			validate: {
+				isAlphanumeric: true,
+				notEmpty: true,
+				len: [3, 512]
+			}
+		}
 	}, {});
-	Topic.associate = function(models) {
+	Topic.associate = function (models) {
 		Topic.belongsTo(models.Category, {
 			foreignKey: 'categoryId',
 			onDelete: 'CASCADE'
