@@ -17,6 +17,8 @@ import { NewTopicComponent } from './new-topic/new-topic.component';
 import { EditTopicComponent } from './edit-topic/edit-topic.component';
 import { ShowTopicComponent } from './show-topic/show-topic.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +33,8 @@ import { NewPostComponent } from './new-post/new-post.component';
 	EditTopicComponent,
 	ShowTopicComponent,
 	NewPostComponent,
+	AdminComponent,
+	AdminUserComponent,
 	],
 	imports: [
 	BrowserModule,

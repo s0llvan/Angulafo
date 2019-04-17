@@ -10,21 +10,21 @@ import { Post } from './post';
 })
 export class ApiService {
 
-	public apiUrl = 'http://localhost:8000'
+	public apiUrl = 'http://localhost:8002'
 	public apiToken: string;
 
 	constructor(private http: HttpClient) { }
 
 	public showCategory(id: Int32Array): Observable<Object> {
-		return this.http.get(this.apiUrl + "/categories/" + id);
+		return this.http.get(this.apiUrl + '/categories/' + id);
 	}
 
 	public showAllCategories(): Observable<Object> {
-		return this.http.get(this.apiUrl + "/categories");
+		return this.http.get(this.apiUrl + '/categories');
 	}
 
 	public createTopic(topic: Topic): Observable<Object> {
-		return this.http.post(this.apiUrl + "/topics", topic, {
+		return this.http.post(this.apiUrl + '/topics', topic, {
 			headers: {
 				'Authorization': this.apiToken
 			}
@@ -32,7 +32,7 @@ export class ApiService {
 	}
 
 	public editTopic(topic: Topic): Observable<Object> {
-		return this.http.put(this.apiUrl + "/topics", topic, {
+		return this.http.put(this.apiUrl + '/topics', topic, {
 			headers: {
 				'Authorization': this.apiToken
 			}
@@ -40,11 +40,11 @@ export class ApiService {
 	}
 
 	public showTopic(id: Int32Array): Observable<Object> {
-		return this.http.get(this.apiUrl + "/topics/" + id);
+		return this.http.get(this.apiUrl + '/topics/' + id);
 	}
 
 	public createPost(post: Post): Observable<Object> {
-		return this.http.post(this.apiUrl + "/posts", post, {
+		return this.http.post(this.apiUrl + '/posts', post, {
 			headers: {
 				'Authorization': this.apiToken
 			}
@@ -57,5 +57,37 @@ export class ApiService {
 
 	public logInUser(user: User): Observable<Object> {
 		return this.http.post(this.apiUrl + '/login', user);
+	}
+
+	public showAdminUsers(): Observable<Object> {
+		return this.http.get(this.apiUrl + '/users', {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public showAdminUser(id: Int32Array): Observable<Object> {
+		return this.http.get(this.apiUrl + '/users/' + id, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public editUser(user: User): Observable<Object> {
+		return this.http.put(this.apiUrl + '/users', user, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public deleteUser(user: User): Observable<Object> {
+		return this.http.delete(this.apiUrl + '/users/' + user.id, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
 	}
 }

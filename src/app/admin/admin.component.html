@@ -1,0 +1,22 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Topics</th>
+      <th>Posts</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td data-label="Username">{{ user.username }}</td>
+      <td data-label="Topics">{{ user.Topics.length }}</td>
+      <td data-label="Posts">{{ user.Posts.length }}</td>
+      <td data-label="Action">
+        <a [routerLink]="['/admin/users', user.id]">
+          <i class="pencil icon"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User }    from '../user';
+import { User } from '../user';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-	private user: User = new User(null, null, null);
+	private user: User = new User(null, null, null, null);
 	private userForm: any;
 
 	private submitted = false;

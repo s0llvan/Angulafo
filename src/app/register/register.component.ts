@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User }    from '../user';
+import { User } from '../user';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class RegisterComponent implements OnInit {
 
-	private user = new User(null, null, null);
+	private user = new User(null, null, null, null);
 	private userForm: any;
 
 	private submitted = false;
@@ -27,17 +27,17 @@ export class RegisterComponent implements OnInit {
 		this.submitted = true;
 
 		this.apiService.createUser(this.user)
-		.subscribe(
-			(data: any) => {
-				this.success = true;
-				this.errors = [];
-			},
-			(data: any) => {
-				if(data.error) {
-					this.success = false;
-					this.errors = data.error;
+			.subscribe(
+				(data: any) => {
+					this.success = true;
+					this.errors = [];
+				},
+				(data: any) => {
+					if (data.error) {
+						this.success = false;
+						this.errors = data.error;
+					}
 				}
-			}
 			);
 	}
 }
