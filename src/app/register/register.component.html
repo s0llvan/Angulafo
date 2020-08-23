@@ -5,7 +5,7 @@
 				Register
 			</div>
 		</h2>
-		<form class="ui large form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+		<form class="ui large form" #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!success">
 			<div class="ui stacked segment left aligned">
 				<div class="field">
 					<label for="name">Username</label>
@@ -22,10 +22,10 @@
 					</div>
 				</div>
 				<div class="field">
-					<label for="password_confirmation">Password (Confirmation)</label>
+					<label for="passwordConfirmation">Password (Confirmation)</label>
 					<div class="ui left icon input">
 						<i class="lock icon"></i>
-						<input type="password" id="password_confirmation" [(ngModel)]="user.password_confirmation" name="password_confirmation" #passwor="ngModel" minlength="8" maxlength="64" required>
+						<input type="password" id="passwordConfirmation" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" #passwor="ngModel" minlength="8" maxlength="64" required>
 					</div>
 				</div>
 				<div class="ui error message" [class.visible]="errors.length">
@@ -33,9 +33,14 @@
 						{{ error.message }}
 					</p>
 				</div>
-				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid || user.password != user.password_confirmation">Register</button>
+				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid || user.password != user.passwordConfirmation">Register</button>
 			</div>
 		</form>
+		<div class="ui success message" *ngIf="success">
+			<p>
+				Registration successfully, now you can login !
+			</p>
+		</div>
 
 		<div class="ui message">
 			<a routerLink="/login" class="left aligned">Sign In</a>

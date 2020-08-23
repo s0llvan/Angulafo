@@ -9,16 +9,18 @@ import { ApiService } from '../api.service';
 })
 export class RegisterComponent implements OnInit {
 
-	private user = new User(null, null, null, null);
-	private userForm: any;
+	public user: User;
+	public userForm: any;
 
 	private submitted = false;
 	private valid = false;
-	private errors = [];
+	public errors: Array<string> = [];
 
-	private success = false;
+	public success = false;
 
-	constructor(private apiService: ApiService) { }
+	constructor(private apiService: ApiService) {
+		this.user = new User();
+	}
 
 	ngOnInit() { }
 

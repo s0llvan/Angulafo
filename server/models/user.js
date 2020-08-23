@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       unique: true
     }
-  });
+  }, { tableName: 'users' });
   User.associate = function (models) {
     User.hasMany(models.Topic, {
       foreignKey: 'authorId',

@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminUserComponent implements OnInit {
 
-	private user: User;
+	public user: User;
 
 	private editUserForm: any;
 

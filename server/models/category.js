@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 				len: [8,255]
 			}
 		}
-	}, {});
+	}, { tableName: 'categories' });
 	Category.associate = function(models) {
 		Category.hasMany(models.Topic, {
 			foreignKey: 'categoryId',

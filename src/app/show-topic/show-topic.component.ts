@@ -11,10 +11,10 @@ import { AuthService } from '../auth.service';
 })
 export class ShowTopicComponent implements OnInit {
 
-	private topic: Topic = new Topic(null, null, null, null, null, null);
+	public topic: Topic;
 
 	private submitted: boolean = false;
-	private errors: Array<Object> = [];
+	public errors: Array<Object> = [];
 
 	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 

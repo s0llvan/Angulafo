@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 				notEmpty: true,
 			}
 		}
-	}, {});
+	}, { tableName: 'posts' });
 	Post.associate = function(models) {
 		Post.belongsTo(models.Topic, {
 			foreignKey: 'topicId',

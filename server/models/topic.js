@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 				len: [3, 512]
 			}
 		}
-	}, {});
+	}, { tableName: 'topics' });
 	Topic.associate = function (models) {
 		Topic.belongsTo(models.Category, {
 			foreignKey: 'categoryId',

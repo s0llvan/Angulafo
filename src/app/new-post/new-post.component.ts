@@ -11,12 +11,12 @@ import { ApiService } from '../api.service';
 })
 export class NewPostComponent implements OnInit {
 
-	private post: Post = new Post(null, null, null, null);
+	public post: Post;
 
 	private submitted: boolean = false;
-	private errors: Array<Object> = [];
+	public errors: Array<Object> = [];
 
-	private topic: Topic = new Topic(null, null, null, null, null, null);
+	public topic: Topic;
 
 	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 

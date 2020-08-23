@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class CategoryComponent implements OnInit {
 
-	private category: Category;
+	public category: Category;
 
 	constructor(private apiService: ApiService, private route: ActivatedRoute, private authService: AuthService) { }
 

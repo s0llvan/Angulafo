@@ -1,4 +1,5 @@
 import { Post } from './post';
+import { User } from './user';
 
 export class Topic {
 	constructor(
@@ -7,7 +8,10 @@ export class Topic {
 		public message: string,
 		public categoryId: Int32Array,
 		public authorId: Int32Array,
-		public Posts: Post[]
+		public Posts: Post[],
+		public User: User,
+		public createdAt: Date,
+		public updatedAt: Date
 	) {
 
 	}

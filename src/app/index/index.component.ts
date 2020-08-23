@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
 
-	private categories: Category[];
+	public categories: Category[] = [];
 
 	constructor(private apiService: ApiService, private router: Router) {
 		this.categories = [];
