@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-admin-user',

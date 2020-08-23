@@ -1,6 +1,6 @@
 module.exports = {
     development: {
-    url: 'postgres://postgres:password@localhost:5432/angulafo',
+    url: 'sqlite::memory:',
     dialect: 'postgres'
   },
     production: {
