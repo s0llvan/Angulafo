@@ -5,7 +5,8 @@ export class Category {
 	public id: Int32Array;
 	public title: String;
 	public description: String;
-	public topics: Topic[];
+	public Topics: Topic[];
+	public postsCount: Number;
 
 	constructor(
 		title: string = undefined,
