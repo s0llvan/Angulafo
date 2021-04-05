@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
-import { Topic } from '../topic';
+import { Post } from '../../class/post';
+import { Topic } from '../../class/topic';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
 	selector: 'app-new-post',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
-import { User } from './user';
+import { User } from '../class/user';
 import { Router } from '@angular/router';
 
 @Injectable({

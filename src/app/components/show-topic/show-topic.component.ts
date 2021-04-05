@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Topic } from '../topic';
+import { Topic } from '../../class/topic';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { AuthService } from '../auth.service';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 	selector: 'app-show-topic',

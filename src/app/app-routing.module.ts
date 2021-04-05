@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { IndexComponent } from './index/index.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { ProfilComponent } from './profil/profil.component';
-import { AuthGuard } from './auth-guard.service';
-import { CategoryComponent } from './category/category.component';
-import { NewTopicComponent } from './new-topic/new-topic.component';
-import { EditTopicComponent } from './edit-topic/edit-topic.component';
-import { ShowTopicComponent } from './show-topic/show-topic.component';
-import { NewPostComponent } from './new-post/new-post.component';
-import { AdminComponent } from './admin/admin.component';
-import { AdminUserComponent } from './admin-user/admin-user.component';
+import { IndexComponent } from './components/index/index.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfilComponent } from './components/profil/profil.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { CategoryComponent } from './components/category/category.component';
+import { NewTopicComponent } from './components/new-topic/new-topic.component';
+import { EditTopicComponent } from './components/edit-topic/edit-topic.component';
+import { ShowTopicComponent } from './components/show-topic/show-topic.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminUserComponent } from './components/admin-user/admin-user.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: IndexComponent },
@@ -43,11 +43,12 @@ const appRoutes: Routes = [
 			{
 				enableTracing: false,
 			}
-		)
-	],
-	exports: [
-		RouterModule
-	],
-	providers: []
-})
-export class AppRoutingModule { }
+			)
+		],
+		exports: [
+			RouterModule
+		],
+		providers: []
+	})
+	export class AppRoutingModule { }
+	

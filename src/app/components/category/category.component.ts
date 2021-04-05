@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../category';
-import { ApiService } from '../api.service';
+import { Category } from '../../class/category';
+import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 	selector: 'app-category',
