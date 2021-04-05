@@ -9,18 +9,18 @@ Topic = require('../models/').Topic;
 Post = require('../models/').Post;
 
 module.exports= {
-
+	
 	create(req, res) {
 		
 		var token = req.get('Authorization');
-
+		
 		var topic = req.body;
-
+		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
 			topic.authorId = user.id;
-
+			
 			Topic.create(topic).then(topic => {
 				res.status(200).json(topic);
 			}).catch(function(err){
@@ -28,17 +28,17 @@ module.exports= {
 			});
 		});		
 	},
-
+	
 	edit(req, res) {
 		
 		var token = req.get('Authorization');
-
+		
 		var topic = req.body;
-
+		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
-
+			
 			Topic.update(
 				{ title: topic.title, message: topic.message },
 				{
@@ -47,39 +47,39 @@ module.exports= {
 					}
 				}
 				)
-			.then(topic => {
-				if(topic[0]) {
-					res.status(200).json(topic);
-				} else {
-					res.status(401).json({});
-				}
-			}).catch(function(err){
-				res.status(400).json(err.errors)
-			});
-		});		
-	},
-
-	show(req, res) {
-
-		var topicId = req.params.id;
-
-		Topic.findOne({
-			where: { id: topicId },
-			include: [{
-				model: User,
-				attributes: ['username']
-			}, {
-				model: Post,
-				attributes: ['message'],
-				include: {
+				.then(topic => {
+					if(topic[0]) {
+						res.status(200).json(topic);
+					} else {
+						res.status(401).json({});
+					}
+				}).catch(function(err){
+					res.status(400).json(err.errors)
+				});
+			});		
+		},
+		
+		show(req, res) {
+			
+			var topicId = req.params.id;
+			
+			Topic.findOne({
+				where: { id: topicId },
+				include: [{
 					model: User,
 					attributes: ['username']
-				}
-			}]
-		}).then(topic => {
-			res.status(200).json(topic);
-		}).catch((err) => {
-			res.status(400).json(err.errors);
-		});
-	},
-}
+				}, {
+					model: Post,
+					attributes: ['message'],
+					include: {
+						model: User,
+						attributes: ['username']
+					}
+				}]
+			}).then(topic => {
+				res.status(200).json(topic);
+			}).catch((err) => {
+				res.status(400).json(err.errors);
+			});
+		},
+	}

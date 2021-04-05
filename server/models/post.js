@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'topicId',
 			onDelete: 'CASCADE'
 		});
-
+		
 		Post.belongsTo(models.User, {
 			foreignKey: 'authorId',
 			onDelete: 'CASCADE'

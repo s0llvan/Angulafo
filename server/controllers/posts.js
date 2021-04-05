@@ -8,18 +8,18 @@ const Op = Sequelize.Op;
 Post = require('../models/').Post;
 
 module.exports= {
-
+	
 	create(req, res) {
 		
 		var token = req.get('Authorization');
-
+		
 		var post = req.body;
-
+		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
 			post.authorId = user.id;
-
+			
 			Post.create(post).then(post => {
 				res.status(200).json(post);
 			}).catch(function(err){

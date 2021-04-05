@@ -25,12 +25,12 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'categoryId',
 			onDelete: 'CASCADE'
 		});
-
+		
 		Topic.belongsTo(models.User, {
 			foreignKey: 'authorId',
 			onDelete: 'CASCADE'
 		});
-
+		
 		Topic.hasMany(models.Post, {
 			foreignKey: 'topicId',
 			onDelete: 'CASCADE'
