@@ -6,7 +6,7 @@ const hmacSHA512 = require('crypto-js/hmac-sha512');
 const Base64 = require('crypto-js/enc-base64');
 
 module.exports = {
-	up: async (queryInterface, Sequelize) => (
+	up: async (queryInterface, Sequelize) => {
 		
 		queryInterface.bulkInsert('users', [{
 			username: 'admin',
@@ -14,7 +14,7 @@ module.exports = {
 			roles: JSON.stringify(['USER', 'ADMIN']),
 			createdAt: new Date(),
 			updatedAt: new Date(),
-		}], {}),
+		}], {});
 		
 		queryInterface.bulkInsert('users', [...Array(7)].map(() => ({
 			username: faker.internet.userName(),
@@ -22,11 +22,10 @@ module.exports = {
 			roles: JSON.stringify(['USER']),
 			createdAt: new Date(),
 			updatedAt: new Date(),
-		})), {})
-		),
-		
-		down: (queryInterface, Sequelize) => {
-			return queryInterface.bulkDelete('users', null, {});
-		}
-	};
+		})), {});
+	},
 	
+	down: (queryInterface, Sequelize) => {
+		return queryInterface.bulkDelete('users', null, {});
+	}
+};

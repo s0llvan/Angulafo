@@ -3,9 +3,10 @@ const hmacSHA512 = require('crypto-js/hmac-sha512');
 const Base64 = require('crypto-js/enc-base64');
 const uniqid = require('uniqid');
 
-Category = require('../models/').Category;
-Topic = require('../models/').Topic;
-User = require('../models/').User;
+const Category = require('../models/').Category;
+const Topic = require('../models/').Topic;
+const Post = require('../models/').Post;
+const User = require('../models/').User;
 
 module.exports = {
 	

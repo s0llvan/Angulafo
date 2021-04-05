@@ -5,8 +5,9 @@ const uniqid = require('uniqid');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-Topic = require('../models/').Topic;
-Post = require('../models/').Post;
+const Topic = require('../models/').Topic;
+const Post = require('../models/').Post;
+const User = require('../models/').User;
 
 module.exports= {
 	
@@ -14,12 +15,12 @@ module.exports= {
 		
 		var token = req.get('Authorization');
 		
-		var topic = req.body;
+		var data = req.body;
 		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
-			topic.authorId = user.id;
+			data.authorId = user.id;
 			
 			Topic.create(topic).then(topic => {
 				res.status(200).json(topic);
@@ -33,17 +34,17 @@ module.exports= {
 		
 		var token = req.get('Authorization');
 		
-		var topic = req.body;
+		var data = req.body;
 		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
 			
 			Topic.update(
-				{ title: topic.title, message: topic.message },
+				{ title: data.title, message: data.message },
 				{
 					where: {
-						[Op.and]: [{id: topic.id}, {authorId: user.id}]
+						[Op.and]: [{id: data.id}, {authorId: user.id}]
 					}
 				}
 				)

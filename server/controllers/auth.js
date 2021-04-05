@@ -5,16 +5,16 @@ const uniqid = require('uniqid');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-User = require('../models/').User;
+const User = require('../models/').User;
 
 module.exports = {
 	
 	logIn(req, res) {
 		
-		var user = req.body;
+		var data = req.body;
 		
-		var passwordHash = sha256(user.password);
-		user.password = Base64.stringify(hmacSHA512(passwordHash, 'r$kB^a59Ju)s9{THJ]'));
+		var passwordHash = sha256(data.password);
+		data.password = Base64.stringify(hmacSHA512(passwordHash, 'r$kB^a59Ju)s9{THJ]'));
 		
 		User.find({
 			where: {

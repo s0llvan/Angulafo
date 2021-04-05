@@ -1,41 +1,41 @@
 <div class="ui fixed inverted menu">
-  <div class="ui container">
-    <a href="#" class="item header">
-      Project Name
-    </a>
-
-    <a routerLink="/" routerLinkActive="active" class="item">
-      <i class="file alternate icon"></i>
-      Forums
-    </a>
-
-    <a *ngIf="!authService.isLoggedIn" routerLink="/register" routerLinkActive="active" class="item right">
-      <i class="user plus icon"></i>
-      Register
-    </a>
-
-    <a *ngIf="!authService.isLoggedIn" routerLink="/login" routerLinkActive="active" class="item">
-      <i class="lock icon"></i>
-      Sign In
-    </a>
-
-    <a *ngIf="authService.isAdminLoggedIn" routerLink="/admin" routerLinkActive="active" class="item right">
-      <i class="user icon"></i>
-      Administration
-    </a>
-
-    <a *ngIf="authService.isLoggedIn" routerLink="/profil" routerLinkActive="active" class="item">
-      <i class="user icon"></i>
-      Profil
-    </a>
-
-    <a *ngIf="authService.isLoggedIn" (click)="authService.logOut()" class="item">
-      <i class="unlock icon"></i>
-      Logout
-    </a>
-  </div>
+	<div class="ui container">
+		<a href="#" class="item header">
+			Angulafo
+		</a>
+		
+		<a routerLink="/" routerLinkActive="active" class="item">
+			<i class="file alternate icon" aria-hidden="true"></i>
+			Forums
+		</a>
+		
+		<a *ngIf="!authService.isLoggedIn" routerLink="/register" routerLinkActive="active" class="item right">
+			<i class="user plus icon" aria-hidden="true"></i>
+			Register
+		</a>
+		
+		<a *ngIf="!authService.isLoggedIn" routerLink="/login" routerLinkActive="active" class="item">
+			<i class="lock icon" aria-hidden="true"></i>
+			Sign In
+		</a>
+		
+		<a *ngIf="authService.isAdminLoggedIn" routerLink="/admin" routerLinkActive="active" class="item right">
+			<i class="user icon" aria-hidden="true"></i>
+			Administration
+		</a>
+		
+		<a *ngIf="authService.isLoggedIn" routerLink="/profil" routerLinkActive="active" class="item">
+			<i class="user icon" aria-hidden="true"></i>
+			Profil
+		</a>
+		
+		<a *ngIf="authService.isLoggedIn" (click)="authService.logOut()" class="item">
+			<i class="unlock icon" aria-hidden="true"></i>
+			Logout
+		</a>
+	</div>
 </div>
 
 <div class="ui segment container main">
-  <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </div>

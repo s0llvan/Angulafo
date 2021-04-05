@@ -11,19 +11,21 @@ models.sequelize
 	console.log("Error creating connection:", error);
 });
 
-var app = require('express')(),
-users = require('./server/controllers/users');
-auth = require('./server/controllers/auth');
-categories = require('./server/controllers/categories');
-topics = require('./server/controllers/topics');
-posts = require('./server/controllers/posts');
+var app = require('express')();
+app.disable("x-powered-by");
 
-User = require('./server/models/').User;
+const users = require('./server/controllers/users');
+const auth = require('./server/controllers/auth');
+const categories = require('./server/controllers/categories');
+const topics = require('./server/controllers/topics');
+const posts = require('./server/controllers/posts');
+
+const User = require('./server/models/').User;
 
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", "http://localhost:4200");
 	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 	
@@ -58,8 +60,8 @@ app.listen(app.get('port'), function () {
 
 function checkUser(req, res, next) {
 	
-	var token = req.get('Authorization');
-	if ((token = req.get('Authorization')) == undefined) {
+	let token = req.get('Authorization')
+	if (token == undefined) {
 		res.status(401);
 	} else {
 		User.find({
@@ -76,13 +78,12 @@ function checkUser(req, res, next) {
 			res.status(400).json(err.errors);
 		});
 	}
-};
-
+}
 
 function checkUserAdmin(req, res, next) {
 	
-	var token = req.get('Authorization');
-	if ((token = req.get('Authorization')) == undefined) {
+	let token = req.get('Authorization')
+	if (token == undefined) {
 		res.status(401);
 	} else {
 		User.find({
@@ -91,7 +92,7 @@ function checkUserAdmin(req, res, next) {
 			}
 		}).then(user => {
 			if (user) {
-				roles = JSON.parse(user.roles);
+				let roles = JSON.parse(user.roles);
 				if (roles.indexOf('ADMIN') >= 0) {
 					next();
 				} else {
@@ -104,4 +105,4 @@ function checkUserAdmin(req, res, next) {
 			res.status(400).json(err.errors);
 		});
 	}
-};
+}

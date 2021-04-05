@@ -10,21 +10,21 @@
 				<div class="field">
 					<label for="name">Username</label>
 					<div class="ui left icon input">
-						<i class="user icon"></i>
+						<i class="user icon" aria-hidden="true"></i>
 						<input type="text" id="name" [(ngModel)]="user.username" name="username" #username="ngModel" minlength="3" maxlength="12" required>
 					</div>
 				</div>
 				<div class="field">
 					<label for="password">Password</label>
 					<div class="ui left icon input">
-						<i class="lock icon"></i>
+						<i class="lock icon" aria-hidden="true"></i>
 						<input type="password" id="password" [(ngModel)]="user.password" name="password" #passwor="ngModel" minlength="8" maxlength="64" required>
 					</div>
 				</div>
 				<div class="field">
 					<label for="passwordConfirmation">Password (Confirmation)</label>
 					<div class="ui left icon input">
-						<i class="lock icon"></i>
+						<i class="lock icon" aria-hidden="true"></i>
 						<input type="password" id="passwordConfirmation" (ngModelChange)="passwordConfirmationChange($event)" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" #passwor="ngModel" minlength="8" maxlength="64" required>
 					</div>
 				</div>

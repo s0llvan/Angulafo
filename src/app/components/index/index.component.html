@@ -11,7 +11,7 @@
 	<div class="ui grid stackable" *ngFor="let category of categories">
 		<div class="two wide column">
 			<div class="ui fluid image tiny">
-				<img src="assets/square-image.png">
+				<img src="assets/square-image.png" alt="Default category picture">
 			</div>
 		</div>
 		<div class="four wide column">
@@ -36,8 +36,8 @@
 		<div class="three wide column right aligned">
 			<div *ngIf="category.Topics.length > 0">
 				<div class="row">
-					<b [routerLink]="['/topics', category.Topics[category.Topics.length - 1].id]">{{
-						category.Topics[category.Topics.length - 1].title }}</b>
+					<strong [routerLink]="['/topics', category.Topics[category.Topics.length - 1].id]">{{
+						category.Topics[category.Topics.length - 1].title }}</strong>
 				</div>
 				<div class="row" *ngIf="category.Topics[category.Topics.length - 1].Posts.length > 0">{{
 					category.Topics[category.Topics.length - 1].Posts[category.Topics[category.Topics.length - 1].Posts.length -

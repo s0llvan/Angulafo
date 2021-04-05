@@ -3,19 +3,21 @@ const hmacSHA512 = require('crypto-js/hmac-sha512');
 const Base64 = require('crypto-js/enc-base64');
 const uniqid = require('uniqid');
 
-User = require('../models/').User;
+const User = require('../models/').User;
+const Post = require('../models/').Post;
+const Topic = require('../models/').Topic;
 
 module.exports = {
 	
 	create(req, res) {
 		
-		var user = req.body;
+		var data = req.body;
 		
-		if (user.password == user.passwordConfirmation) {
-			var passwordHash = sha256(user.password);
-			user.password = Base64.stringify(hmacSHA512(passwordHash, 'r$kB^a59Ju)s9{THJ]'));
-			user.roles = JSON.stringify(['USER']);
-			user.session = uniqid();
+		if (data.password == data.passwordConfirmation) {
+			var passwordHash = sha256(data.password);
+			data.password = Base64.stringify(hmacSHA512(passwordHash, 'r$kB^a59Ju)s9{THJ]'));
+			data.roles = JSON.stringify(['USER']);
+			data.session = uniqid();
 			
 			User.create(user).then(user => {
 				res.status(200).json({
@@ -71,11 +73,11 @@ module.exports = {
 	
 	update(req, res) {
 		
-		var user = req.body;
+		var data = req.body;
 		
 		User.update({
-			username: user.username,
-			roles: JSON.stringify(user.roles)
+			username: data.username,
+			roles: JSON.stringify(data.roles)
 		}, {
 			where: {
 				id: user.id

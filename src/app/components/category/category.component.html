@@ -9,7 +9,7 @@
 		<div class="ui grid stackable" *ngFor="let topic of category.Topics">
 			<div class="one wide column middle aligned">
 				<div class="ui fluid image small">
-					<img src="assets/square-image.png">
+					<img src="assets/square-image.png" alt="Default topic picture">
 				</div>
 			</div>
 			<div class="six wide column">
@@ -28,22 +28,22 @@
 			<div class="two wide column middle aligned">
 				<div class="row">0</div>
 				<div class="row">
-					<b>Views</b>
+					<strong>Views</strong>
 				</div>
 			</div>
 			<div class="four wide column middle aligned">
 				<div class="row">{{ topic.Posts.length }}</div>
 				<div class="row">
-					<b>Posts</b>
+					<strong>Posts</strong>
 				</div>
 			</div>
 			<div class="three wide column right aligned middle aligned">
 				<div class="row">
-					<b *ngIf="topic.Posts.length > 0">
+					<strong *ngIf="topic.Posts.length > 0">
 						<div *ngIf="topic.Posts[topic.Posts.length - 1 ].User">
 							{{ topic.Posts[topic.Posts.length - 1 ].User.username }}
 						</div>
-					</b>
+					</strong>
 				</div>
 				<div class="row" *ngIf="topic.Posts.length > 0">
 					{{ topic.Posts[topic.Posts.length-1].createdAt | date:'H:s, dd/MM/yyyy' }}

@@ -8,11 +8,12 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../../config/config')[env];
 var db        = {};
 
+var sequelize = undefined;
 //Create a Sequelize connection to the database using the URL in config/config.js
 if (config.use_env_variable) {
-	var sequelize = new Sequelize(process.env[config.use_env_variable]);
+	sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-	var sequelize = new Sequelize(config.url, config);
+	sequelize = new Sequelize(config.url, config);
 }
 
 //Load all the models

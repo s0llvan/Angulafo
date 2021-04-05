@@ -5,7 +5,8 @@ const uniqid = require('uniqid');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-Post = require('../models/').Post;
+const Post = require('../models/').Post;
+const User = require('../models/').User;
 
 module.exports= {
 	
@@ -13,12 +14,12 @@ module.exports= {
 		
 		var token = req.get('Authorization');
 		
-		var post = req.body;
+		var data = req.body;
 		
 		User.find({ where: {
 			'session': token
 		}}).then(user => {
-			post.authorId = user.id;
+			data.authorId = user.id;
 			
 			Post.create(post).then(post => {
 				res.status(200).json(post);

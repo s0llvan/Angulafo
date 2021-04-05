@@ -11,7 +11,7 @@
 				<div class="content">
 					<div class="header">
 						<div class="ui fluid image small centered rounded">
-							<img src="assets/square-image.png">
+							<img src="assets/square-image.png" alt="Default user avatar picture">
 						</div>
 					</div>
 					<h3 class="center aligned">{{ topic.User ? topic.User.username : 'Unknow' }}</h3>
@@ -28,18 +28,18 @@
 				<div class="ui divider" style="margin-top:100px;"></div>
 				
 				<div class="segment">
-					Created date : <b>{{ topic.createdAt | date:'H:s, dd/MM/yyyy' }}</b>
+					Created date : <strong>{{ topic.createdAt | date:'H:s, dd/MM/yyyy' }}</strong>
 				</div>
 			</div>
 		</div>
 		
 		<h3 class="ui header right aligned">
 			<button class="ui button" *ngIf="owner()" [routerLink]="['/topics', topic.id, 'edit']">
-				<i class="pencil icon"></i>
+				<i class="pencil icon" aria-hidden="true"></i>
 				Edit
 			</button>
 			<button class="ui button" *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">
-				<i class="reply all icon"></i>
+				<i class="reply all icon" aria-hidden="true"></i>
 				Reply
 			</button>
 		</h3>
@@ -50,7 +50,7 @@
 					<div class="content">
 						<div class="header">
 							<div class="ui fluid image small centered rounded">
-								<img src="assets/square-image.png">
+								<img src="assets/square-image.png" alt="Default user avatar picture">
 							</div>
 						</div>
 						<h3 class="ui center aligned header">{{ post.User.username }}</h3>
@@ -64,14 +64,14 @@
 					<div class="ui divider" style="margin-top:100px;"></div>
 					
 					<div class="segment">
-						Created date : <b>{{ topic.createdAt | date:'H:mm, dd/MM/yyyy' }}</b>
+						Created date : <strong>{{ topic.createdAt | date:'H:mm, dd/MM/yyyy' }}</strong>
 					</div>
 				</div>
 			</div>
 			
 			<h3 class="ui header right aligned">
 				<button class="ui button" *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">
-					<i class="reply all icon"></i>
+					<i class="reply all icon" aria-hidden="true"></i>
 					Reply
 				</button>
 			</h3>
