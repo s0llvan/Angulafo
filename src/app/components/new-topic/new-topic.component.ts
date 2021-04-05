@@ -11,12 +11,11 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class NewTopicComponent implements OnInit {
 	
-	public topic: Topic;
-	
 	public submitted: boolean = false;
 	public errors: Array<Object> = [];
 	
 	public category: Category;
+	public topic: Topic;
 	
 	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
 		this.loadCategory(this.activatedRoute.snapshot.params.id)

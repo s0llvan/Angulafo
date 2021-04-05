@@ -10,15 +10,16 @@ import { ApiService } from '../../services/api.service';
 })
 export class AdminComponent implements OnInit {
 	
-	public users: User[];
+	public users: User[] = [];
 	
-	constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+	constructor(private apiService: ApiService) {
+		
+	}
 	
 	ngOnInit() {
-		this.route.params.subscribe(params => {
-			this.getUsers();
-		});
+		this.getUsers();
 	}
+	
 	getUsers(): void {
 		this.apiService.showUsers().subscribe((users: User[]) => {
 			this.users = users;
@@ -27,7 +28,6 @@ export class AdminComponent implements OnInit {
 			if (data.error) {
 				alert('An error was occured, please try again later !');
 			}
-		}
-		);
+		});
 	}
 }

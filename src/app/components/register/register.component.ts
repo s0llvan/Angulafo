@@ -12,11 +12,11 @@ export class RegisterComponent implements OnInit {
 	public user: User;
 	public userForm: any;
 	
-	public submitted = false;
-	private valid = false;
+	public submitted: boolean = false;
+	private valid: boolean = false;
 	public errors: Array<Object> = [];
 	
-	public success = false;
+	public success: boolean = false;
 	
 	constructor(private apiService: ApiService) {
 		this.user = new User();

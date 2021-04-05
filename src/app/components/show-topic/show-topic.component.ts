@@ -13,7 +13,6 @@ export class ShowTopicComponent implements OnInit {
 	
 	public topic: Topic;
 	
-	private submitted: boolean = false;
 	public errors: Array<Object> = [];
 	
 	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {

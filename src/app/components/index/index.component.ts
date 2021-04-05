@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit {
 	public categories: Category[] = [];
 	
 	constructor(private apiService: ApiService, private router: Router) {
-		this.categories = [];
+		
 	}
 	
 	ngOnInit() {
@@ -31,7 +31,6 @@ export class IndexComponent implements OnInit {
 			if (data.error) {
 				alert('An error was occured, please try again later !');
 			}
-		}
-		);
+		});
 	}
 }

@@ -31,8 +31,7 @@ export class EditTopicComponent implements OnInit {
 			if(data.error) {
 				alert('An error was occured, please try again later !');
 			}
-		}
-		);
+		});
 	}
 	
 	onSubmit(): void {
@@ -48,7 +47,6 @@ export class EditTopicComponent implements OnInit {
 			} else {
 				this.errors.push({ message: 'An error was occured, please try again later !' });
 			}
-		}
-		);
+		});
 	}
 }

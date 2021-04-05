@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
 	
 	public category: Category;
 	
-	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private authService: AuthService) {
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
 		this.showCategory(this.activatedRoute.snapshot.params.id);
 	}
 	
@@ -22,17 +22,13 @@ export class CategoryComponent implements OnInit {
 	}
 	
 	showCategory(categoryId: Int32Array): void {
-		this.apiService.showCategory(categoryId)
-		.subscribe(
-			(category: Category) => {
-				this.category = category;
-			},
-			(data: any) => {
-				if (data.error) {
-					alert('An error was occured, please try again later !');
-				}
+		this.apiService.showCategory(categoryId).subscribe((category: Category) => {
+			this.category = category;
+		},
+		(data: any) => {
+			if (data.error) {
+				alert('An error was occured, please try again later !');
 			}
-			);
-		}
+		});
 	}
-	
+}

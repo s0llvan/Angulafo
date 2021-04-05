@@ -15,8 +15,8 @@ export class AdminUserComponent implements OnInit {
 	
 	private editUserForm: any;
 	
-	private submitted = false;
-	private errors = [];
+	private submitted: boolean = false;
+	private errors: Array<any> = [];
 	
 	private success = false;
 	

@@ -22,7 +22,7 @@
 					{{ error.message }}
 				</div>
 
-				<button type="submit" class="ui button" [disabled]="!editTopicForm.form.valid">Save</button>
+				<button type="submit" class="ui button" [disabled]="!editTopicForm.form.valid || submitted">Save</button>
 			</form>
 		</div>
 	</div>
