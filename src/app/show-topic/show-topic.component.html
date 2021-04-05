@@ -1,49 +1,11 @@
 <h2 class="ui header">Forum</h2>
 
-<h4 class="ui top attached header inverted">
-	{{ topic.title }}
-</h4>
-
-<div class="ui attached segment">
-	<div class="ui grid stackable">
-		<div class="segment ui three wide column" style="margin:20px;">
-			<div class="content">
-				<div class="header">
-					<div class="ui fluid image small centered rounded">
-						<img src="assets/square-image.png">
-					</div>
-				</div>
-				<h3 class="center aligned">{{ topic.User ? topic.User.username : 'Unknow' }}</h3>
-			</div>
-			<br>
-		</div>
-		<div class="twelve wide column" style="padding:20px;">
-			<h3 class="header">{{ topic.title }}</h3>
-
-			<div class="segment">
-				{{ topic.message }}
-			</div>
-
-			<div class="ui divider" style="margin-top:100px;"></div>
-
-			<div class="segment">
-				Created date : <b>{{ topic.createdAt | date:'H:s, dd/MM/yyyy' }}</b>
-			</div>
-		</div>
-	</div>
-
-	<h3 class="ui header right aligned">
-		<button class="ui button" *ngIf="owner()" [routerLink]="['/topics', topic.id, 'edit']">
-			<i class="pencil icon"></i>
-			Edit
-		</button>
-		<button class="ui button" *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">
-			<i class="reply all icon"></i>
-			Reply
-		</button>
-	</h3>
-
-	<div class="ui attached segment" *ngFor="let post of topic.Posts">
+<ng-template [ngIf]="topic">
+	<h4 class="ui top attached header inverted">
+		{{ topic.title }}
+	</h4>
+	
+	<div class="ui attached segment">
 		<div class="ui grid stackable">
 			<div class="segment ui three wide column" style="margin:20px;">
 				<div class="content">
@@ -52,27 +14,67 @@
 							<img src="assets/square-image.png">
 						</div>
 					</div>
-					<h3 class="ui center aligned header">{{ post.User.username }}</h3>
+					<h3 class="center aligned">{{ topic.User ? topic.User.username : 'Unknow' }}</h3>
 				</div>
+				<br>
 			</div>
 			<div class="twelve wide column" style="padding:20px;">
+				<h3 class="header">{{ topic.title }}</h3>
+				
 				<div class="segment">
-					{{ post.message }}
+					{{ topic.message }}
 				</div>
-
+				
 				<div class="ui divider" style="margin-top:100px;"></div>
-
+				
 				<div class="segment">
-					Created date : <b>{{ topic.createdAt | date:'H:mm, dd/MM/yyyy' }}</b>
+					Created date : <b>{{ topic.createdAt | date:'H:s, dd/MM/yyyy' }}</b>
 				</div>
 			</div>
 		</div>
-
+		
 		<h3 class="ui header right aligned">
+			<button class="ui button" *ngIf="owner()" [routerLink]="['/topics', topic.id, 'edit']">
+				<i class="pencil icon"></i>
+				Edit
+			</button>
 			<button class="ui button" *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">
 				<i class="reply all icon"></i>
 				Reply
 			</button>
 		</h3>
+		
+		<div class="ui attached segment" *ngFor="let post of topic.Posts">
+			<div class="ui grid stackable">
+				<div class="segment ui three wide column" style="margin:20px;">
+					<div class="content">
+						<div class="header">
+							<div class="ui fluid image small centered rounded">
+								<img src="assets/square-image.png">
+							</div>
+						</div>
+						<h3 class="ui center aligned header">{{ post.User.username }}</h3>
+					</div>
+				</div>
+				<div class="twelve wide column" style="padding:20px;">
+					<div class="segment">
+						{{ post.message }}
+					</div>
+					
+					<div class="ui divider" style="margin-top:100px;"></div>
+					
+					<div class="segment">
+						Created date : <b>{{ topic.createdAt | date:'H:mm, dd/MM/yyyy' }}</b>
+					</div>
+				</div>
+			</div>
+			
+			<h3 class="ui header right aligned">
+				<button class="ui button" *ngIf="is_logged()" [routerLink]="['/topics', topic.id, 'new-post']">
+					<i class="reply all icon"></i>
+					Reply
+				</button>
+			</h3>
+		</div>
 	</div>
-</div>
+</ng-template>

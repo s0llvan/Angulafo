@@ -10,53 +10,44 @@ import { ApiService } from '../api.service';
 	styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent implements OnInit {
-
+	
 	public post: Post;
-
+	
 	private submitted: boolean = false;
 	public errors: Array<Object> = [];
-
+	
 	public topic: Topic;
-
-	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
-
+	
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+		this.loadTopic(this.activatedRoute.snapshot.params.id);
+	}
+	
 	ngOnInit() {
-
-		this.route.params.subscribe(params => {
-			this.post.topicId = params.id;
-
-			this.loadTopic();
+		this.post = new Post();
+	}
+	
+	onSubmit(): void {
+		
+		this.submitted = true;
+		this.post.topicId = this.topic.id;
+		
+		this.apiService.createPost(this.post).subscribe((data: any) => {
+			this.router.navigate(['/topics', this.post.topicId]);
+		}, (data: any) => {
+			if (Array.isArray(data.error)) {
+				this.errors = data.error;
+			} else {
+				this.errors.push({ message: 'An error was occured, please try again later !' });
+			}
 		});
 	}
-
-	onSubmit(): void {
-
-		this.submitted = true;
-
-		this.apiService.createPost(this.post)
-			.subscribe(
-				(data: any) => {
-					this.router.navigate(['/topics', this.post.topicId]);
-				},
-				(data: any) => {
-					if (Array.isArray(data.error)) {
-						this.errors = data.error;
-					} else {
-						this.errors.push({ message: 'An error was occured, please try again later !' });
-					}
-				}
-			);
-	}
-
-	loadTopic(): void {
-		this.apiService.showTopic(this.post.topicId)
-			.subscribe(
-				(data: any) => {
-					this.topic = data;
-				},
-				(data: any) => {
-					this.errors.push({ message: 'An error was occured, please try again later !' });
-				}
-			);
+	
+	loadTopic(topicId: Int32Array): void {
+		this.apiService.showTopic(topicId).subscribe((data: any) => {
+			this.topic = data;
+		},
+		(data: any) => {
+			this.errors.push({ message: 'An error was occured, please try again later !' });
+		});
 	}
 }
