@@ -20,10 +20,12 @@ export class NewPostComponent implements OnInit {
 	
 	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
 		this.loadTopic(this.activatedRoute.snapshot.params.id);
+
+		this.post = new Post();
 	}
 	
 	ngOnInit() {
-		this.post = new Post();
+		
 	}
 	
 	onSubmit(): void {

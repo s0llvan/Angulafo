@@ -10,49 +10,44 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 	styleUrls: ['./new-topic.component.css']
 })
 export class NewTopicComponent implements OnInit {
-
+	
 	public topic: Topic;
 	
 	private submitted: boolean = false;
 	public errors: Array<Object> = [];
-
+	
 	public category: Category;
-
-	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
-
+	
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+		this.loadCategory(this.activatedRoute.snapshot.params.id)
+		
+		this.topic = new Topic();
+	}
+	
 	ngOnInit() {
-
-		this.route.params.subscribe(params => {
-			this.topic.categoryId = params.id;
-
-			this.loadCategory();
+		
+	}
+	
+	onSubmit(): void {
+		
+		this.submitted = true;
+		this.topic.categoryId = this.category.id;
+		
+		this.apiService.createTopic(this.topic)
+		.subscribe((data: any) => {
+			this.router.navigate(['/categories', this.category.id]);
+		}, (data: any) => {
+			if (Array.isArray(data.error)) {
+				this.errors = data.error;
+			} else {
+				this.errors.push({ message: 'An error was occured, please try again later !' });
+			}
 		});
 	}
-
-	onSubmit(): void {
-
-		this.submitted = true;
-
-		this.apiService.createTopic(this.topic)
-			.subscribe(
-				(data: any) => {
-					this.router.navigate(['/categories', this.topic.categoryId]);
-				},
-				(data: any) => {
-					if (Array.isArray(data.error)) {
-						this.errors = data.error;
-					} else {
-						this.errors.push({ message: 'An error was occured, please try again later !' });
-					}
-				}
-			);
-	}
-
-	loadCategory(): void {
-		this.apiService.showCategory(this.topic.categoryId).subscribe(
-			(data: any) => {
-				this.category = data;
-			}
-		);
+	
+	loadCategory(categoryId: Int32Array): void {
+		this.apiService.showCategory(categoryId).subscribe((data: any) => {
+			this.category = data;
+		});
 	}
 }

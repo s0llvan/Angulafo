@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				isAlphanumeric: true,
+				is: /^[a-zA-Z0-9 ?!]+$/i,
 				notEmpty: true,
 				len: [3, 32]
 			}
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.TEXT,
 			allowNull: false,
 			validate: {
-				isAlphanumeric: true,
+				is: /^[a-zA-Z0-9 ?!]+$/i,
 				notEmpty: true,
 				len: [3, 512]
 			}

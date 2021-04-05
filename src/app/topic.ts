@@ -3,15 +3,15 @@ import { User } from './user';
 
 export class Topic {
 	constructor(
-		public id: Int32Array,
-		public title: string,
-		public message: string,
-		public categoryId: Int32Array,
-		public authorId: Int32Array,
-		public Posts: Post[],
-		public User: User,
-		public createdAt: Date,
-		public updatedAt: Date
+		public id: Int32Array = undefined,
+		public title: string = undefined,
+		public message: string = undefined,
+		public categoryId: Int32Array = undefined,
+		public authorId: Int32Array = undefined,
+		public Posts: Post[] = [],
+		public User: User = undefined,
+		public createdAt: Date = undefined,
+		public updatedAt: Date = undefined
 	) {
 
 	}

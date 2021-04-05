@@ -5,16 +5,16 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				isAlphanumeric: true,
+				is: /^[a-zA-Z0-9 ]+$/i,
 				notEmpty: true,
 				len: [3,32]
 			}
 		},
 		description: {
 			type: DataTypes.STRING,
-			allowNull: true,
+			allowNull: false,
 			validate: {
-				isAlphanumeric: true,
+				is: /^[a-zA-Z0-9 ]+$/i,
 				notEmpty: false,
 				len: [8,255]
 			}
