@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
 	
 	public category: Category;
 	
-	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private authService: AuthService) {
 		this.showCategory(this.activatedRoute.snapshot.params.id);
 	}
 	
