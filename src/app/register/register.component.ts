@@ -8,38 +8,47 @@ import { ApiService } from '../api.service';
 	styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+	
 	public user: User;
 	public userForm: any;
-
-	private submitted = false;
+	
+	public submitted = false;
 	private valid = false;
-	public errors: Array<string> = [];
-
+	public errors: Array<Object> = [];
+	
 	public success = false;
-
+	
 	constructor(private apiService: ApiService) {
 		this.user = new User();
 	}
-
+	
 	ngOnInit() { }
-
+	
 	onSubmit(): void {
-
+		
 		this.submitted = true;
-
-		this.apiService.createUser(this.user)
-			.subscribe(
-				(data: any) => {
-					this.success = true;
-					this.errors = [];
-				},
-				(data: any) => {
-					if (data.error) {
-						this.success = false;
-						this.errors = data.error;
-					}
-				}
-			);
+		
+		this.apiService.createUser(this.user).subscribe((data: any) => {
+			this.success = true;
+			this.errors = [];
+		}, (data: any) => {
+			if (data.error) {
+				this.success = false;
+				this.errors = data.error;
+			}
+		});
+	}
+	
+	passwordConfirmationChange(value: String): void {
+		if(value != this.user.password && this.user.password.length == value.length) {
+			if(this.errors.filter(error => error['type'] == "passwordConfirmation").length <= 0) {
+				this.errors.push({
+					message: "Wrong password confirmation",
+					type: "passwordConfirmation"
+				});
+			}
+		} else {
+			this.errors = this.errors.filter(error => error['type'] != "passwordConfirmation");
+		}
 	}
 }

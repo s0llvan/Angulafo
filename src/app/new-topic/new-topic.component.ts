@@ -13,7 +13,7 @@ export class NewTopicComponent implements OnInit {
 	
 	public topic: Topic;
 	
-	private submitted: boolean = false;
+	public submitted: boolean = false;
 	public errors: Array<Object> = [];
 	
 	public category: Category;

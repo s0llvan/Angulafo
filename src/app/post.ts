@@ -1,13 +1,22 @@
 export class Post {
+	
+	public id: Int32Array;
+	public message: string;
+	public topicId: Int32Array;
+	public authorId: Int32Array;
+	public createdAt: Date;
+	public updatedAt: Date;
+	
 	constructor(
-		public id: Int32Array = undefined,
-		public message: string = undefined,
-		public topicId: Int32Array = undefined,
-		public authorId: Int32Array = undefined,
-		public createdAt: Date = undefined,
-		public updatedAt: Date = undefined
+		id: Int32Array = undefined,
+		message: string = undefined,
+		topicId: Int32Array = undefined,
+		authorId: Int32Array = undefined,
+		createdAt: Date = undefined,
+		updatedAt: Date = undefined
 		)
-	{
-
+		{
+			
+		}
 	}
-}
+	

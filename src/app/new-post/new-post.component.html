@@ -21,7 +21,7 @@
 					{{ error.message }}
 				</div>
 				
-				<button type="submit" class="ui button" [disabled]="!newPostForm.form.valid">Submit</button>
+				<button type="submit" class="ui button" [disabled]="!newPostForm.form.valid || submitted">Submit</button>
 			</form>
 		</div>
 	</div>

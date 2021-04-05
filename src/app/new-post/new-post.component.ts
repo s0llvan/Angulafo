@@ -13,7 +13,7 @@ export class NewPostComponent implements OnInit {
 	
 	public post: Post;
 	
-	private submitted: boolean = false;
+	public submitted: boolean = false;
 	public errors: Array<Object> = [];
 	
 	public topic: Topic;

@@ -36,7 +36,7 @@ export class AdminUserComponent implements OnInit {
 	}
 
 	getUser(userId): void {
-		this.apiService.showAdminUser(userId)
+		this.apiService.showUser(userId)
 			.subscribe(
 				(data: User) => {
 					this.user = data;
@@ -55,7 +55,7 @@ export class AdminUserComponent implements OnInit {
 	}
 
 	delete(): void {
-		this.apiService.deleteUser(this.user)
+		this.apiService.deleteUser(this.user.id)
 		.subscribe(
 			(data: any) => {
 				this.router.navigate(['/admin']);

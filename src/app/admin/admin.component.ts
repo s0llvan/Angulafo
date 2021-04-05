@@ -20,8 +20,8 @@ export class AdminComponent implements OnInit {
 		});
 	}
 	getUsers(): void {
-		this.apiService.showAdminUsers().subscribe((data: User[]) => {
-			this.users = data;
+		this.apiService.showUsers().subscribe((users: User[]) => {
+			this.users = users;
 		},
 		(data: any) => {
 			if (data.error) {

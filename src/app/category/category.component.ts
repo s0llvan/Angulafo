@@ -10,29 +10,29 @@ import { AuthService } from '../auth.service';
 	styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-
+	
 	public category: Category;
-
-	constructor(private apiService: ApiService, private route: ActivatedRoute, private authService: AuthService) { }
-
+	
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private authService: AuthService) {
+		this.showCategory(this.activatedRoute.snapshot.params.id);
+	}
+	
 	ngOnInit() {
-
-		this.route.params.subscribe(params => {
-			this.showCategory(params.id);
-		});
+		
 	}
-
-	showCategory(id: Int32Array): void {
-		this.apiService.showCategory(id)
-			.subscribe(
-				(data: Category) => {
-					this.category = data;
-				},
-				(data: any) => {
-					if (data.error) {
-						alert('An error was occured, please try again later !');
-					}
+	
+	showCategory(categoryId: Int32Array): void {
+		this.apiService.showCategory(categoryId)
+		.subscribe(
+			(category: Category) => {
+				this.category = category;
+			},
+			(data: any) => {
+				if (data.error) {
+					alert('An error was occured, please try again later !');
 				}
+			}
 			);
+		}
 	}
-}
+	

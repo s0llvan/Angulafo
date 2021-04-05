@@ -10,13 +10,13 @@ import { Post } from './post';
 })
 export class ApiService {
 
-	public apiUrl = 'http://localhost:8002'
+	public apiUrl: string = 'http://localhost:8002'
 	public apiToken: string;
 
 	constructor(private http: HttpClient) { }
 
-	public showCategory(id: Int32Array): Observable<Object> {
-		return this.http.get(this.apiUrl + '/categories/' + id);
+	public showCategory(categoryId: Int32Array): Observable<Object> {
+		return this.http.get(this.apiUrl + '/categories/' + categoryId);
 	}
 
 	public showAllCategories(): Observable<Object> {
@@ -39,8 +39,8 @@ export class ApiService {
 		});
 	}
 
-	public showTopic(id: Int32Array): Observable<Object> {
-		return this.http.get(this.apiUrl + '/topics/' + id);
+	public showTopic(topicId: Int32Array): Observable<Object> {
+		return this.http.get(this.apiUrl + '/topics/' + topicId);
 	}
 
 	public createPost(post: Post): Observable<Object> {
@@ -59,7 +59,7 @@ export class ApiService {
 		return this.http.post(this.apiUrl + '/login', user);
 	}
 
-	public showAdminUsers(): Observable<Object> {
+	public showUsers(): Observable<Object> {
 		return this.http.get(this.apiUrl + '/users', {
 			headers: {
 				'Authorization': this.apiToken
@@ -67,8 +67,8 @@ export class ApiService {
 		});
 	}
 
-	public showAdminUser(id: Int32Array): Observable<Object> {
-		return this.http.get(this.apiUrl + '/users/' + id, {
+	public showUser(userId: Int32Array): Observable<Object> {
+		return this.http.get(this.apiUrl + '/users/' + userId, {
 			headers: {
 				'Authorization': this.apiToken
 			}
@@ -83,8 +83,8 @@ export class ApiService {
 		});
 	}
 
-	public deleteUser(user: User): Observable<Object> {
-		return this.http.delete(this.apiUrl + '/users/' + user.id, {
+	public deleteUser(userId: Int32Array): Observable<Object> {
+		return this.http.delete(this.apiUrl + '/users/' + userId, {
 			headers: {
 				'Authorization': this.apiToken
 			}

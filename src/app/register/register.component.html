@@ -25,7 +25,7 @@
 					<label for="passwordConfirmation">Password (Confirmation)</label>
 					<div class="ui left icon input">
 						<i class="lock icon"></i>
-						<input type="password" id="passwordConfirmation" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" #passwor="ngModel" minlength="8" maxlength="64" required>
+						<input type="password" id="passwordConfirmation" (ngModelChange)="passwordConfirmationChange($event)" [(ngModel)]="user.passwordConfirmation" name="passwordConfirmation" #passwor="ngModel" minlength="8" maxlength="64" required>
 					</div>
 				</div>
 				<div class="ui error message" [class.visible]="errors.length">
@@ -33,7 +33,7 @@
 						{{ error.message }}
 					</p>
 				</div>
-				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid || user.password != user.passwordConfirmation">Register</button>
+				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid || user.password != user.passwordConfirmation || submitted">Register</button>
 			</div>
 		</form>
 		<div class="ui success message" *ngIf="success">

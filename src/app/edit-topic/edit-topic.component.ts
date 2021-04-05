@@ -15,18 +15,17 @@ export class EditTopicComponent implements OnInit {
 	private submitted: boolean = false;
 	public errors: Array<Object> = [];
 	
-	constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
+	constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+		this.showTopic(this.activatedRoute.snapshot.params.id);
+	}
 	
 	ngOnInit() {
 		
-		this.route.params.subscribe(params => {
-			this.showTopic(params.id);
-		});
 	}
 	
-	showTopic(id: Int32Array): void {
-		this.apiService.showTopic(id).subscribe((data: Topic) => {
-			this.topic = data;
+	showTopic(topicId: Int32Array): void {
+		this.apiService.showTopic(topicId).subscribe((topic: Topic) => {
+			this.topic = topic;
 		},
 		(data: any) => {
 			if(data.error) {

@@ -26,7 +26,7 @@
 						{{ error }}
 					</p>
 				</div>
-				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid">Log in</button>
+				<button type="submit" class="ui fluid large submit button" [disabled]="!loginForm.form.valid || submitted">Log in</button>
 			</div>
 		</form>
 

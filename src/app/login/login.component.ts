@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 	public user: User = new User(null, null, null, null);
 	public userForm: any;
 
-	private submitted = false;
+	public submitted = false;
 	public errors: Array<string> = [];
 
 	constructor(private authService: AuthService, private router: Router) { }
