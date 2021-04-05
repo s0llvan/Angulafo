@@ -1,19 +1,22 @@
-<form #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)" *ngIf="user" class="ui form">
-    <div class="field">
-        <label>Username</label>
-        <input value="{{ user.username }}" [(ngModel)]="user.username" name="username" #username="ngModel" type="text">
-    </div>
-    <div class="field">
-        <select multiple [ngModel]="user.roles" name="roles">
-            <option value="USER" [selected]="user.roles.indexOf('USER') >= 0">USER</option>
-            <option value="ADMIN" [selected]="user.roles.indexOf('ADMIN') >= 0">ADMIN</option>
-        </select>
-    </div>
-    <div [class.visible]="errors.length" class="ui error message">
-        <p *ngFor="let error of errors">
-            {{ error.message }}
-        </p>
-    </div>
-    <button (click)="delete()" class="red ui button" type="button">Delete</button>
-    <button [disabled]="!editUserForm.form.valid" class="ui button" type="submit">Save</button>
-</form>
+<ng-template [ngIf]="user">
+	<form #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)" class="ui form">
+		<div class="field">
+			<label>Username</label>
+			<input value="{{ user.username }}" [(ngModel)]="user.username" name="username" #username="ngModel" type="text">
+		</div>
+		<div class="field">
+			<select multiple [ngModel]="user.roles" name="roles">
+				<option value="USER" [selected]="user.roles.indexOf('USER') >= 0">USER</option>
+				<option value="ADMIN" [selected]="user.roles.indexOf('ADMIN') >= 0">ADMIN</option>
+			</select>
+		</div>
+		<div [class.visible]="errors.length" class="ui error message">
+			<p *ngFor="let error of errors">
+				{{ error.message }}
+			</p>
+		</div>
+		<button (click)="delete()" class="red ui button" type="button">Delete</button>
+		<button [disabled]="!editUserForm.form.valid" class="ui button" type="submit">Save</button>
+	</form>
+	
+</ng-template>

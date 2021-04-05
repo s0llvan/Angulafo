@@ -1,10 +1,10 @@
 <h2 class="ui header">Forum</h2>
 
-<div *ngIf="category">
+<ng-template [ngIf]="category">
 	<h4 class="ui top attached header inverted">
 		{{ category.title }}
 	</h4>
-
+	
 	<div class="ui attached segment">
 		<div class="ui grid stackable" *ngFor="let topic of category.Topics">
 			<div class="one wide column middle aligned">
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="ui grid stackable" *ngIf="authService.isLoggedIn">
 			<div class="sixteen wide column">
 				<button class="ui button right floated" [routerLink]="['/categories', category.id, 'new-topic']">
@@ -59,4 +59,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</ng-template>

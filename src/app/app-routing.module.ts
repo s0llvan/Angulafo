@@ -30,8 +30,8 @@ const appRoutes: Routes = [
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	// Admin
-	{ path: 'admin', component: AdminComponent },
-	{ path: 'admin/users/:id', component: AdminUserComponent },
+	{ path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/users/:id', component: AdminUserComponent, canActivate: [AuthGuard] },
 	// Errors
 	{ path: '**', component: PageNotFoundComponent }
 ];
