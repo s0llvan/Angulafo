@@ -19,9 +19,9 @@ module.exports = {
 		User.find({
 			where: {
 				[Op.and]: [{
-					username: user.username
+					username: data.username
 				}, {
-					password: user.password
+					password: data.password
 				}]
 			},
 			attributes: {

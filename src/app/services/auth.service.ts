@@ -40,6 +40,7 @@ export class AuthService {
 	
 	public logOut(): void {
 		this.isLoggedIn = false;
+		this.isAdminLoggedIn = false;
 		this.user = undefined;
 		this.router.navigate(['/login']);
 	}

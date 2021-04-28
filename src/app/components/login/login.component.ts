@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 			this.router.navigate(['/profil']);
 		}, () => {
 			this.errors.push('Username or password is incorrect !');
+			this.submitted = false;
 		});
 	}
 }
