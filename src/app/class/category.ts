@@ -1,11 +1,13 @@
+import { Post } from './post';
 import { Topic } from './topic';
 
 export class Category {
 
 	public id: Int32Array;
-	public title: String;
-	public description: String;
+	public title: string;
+	public description: string;
 	public Topics: Topic[];
+	public Posts: Post[];
 	public postsCount: Number;
 
 	constructor(

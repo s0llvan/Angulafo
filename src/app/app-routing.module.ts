@@ -14,6 +14,7 @@ import { ShowTopicComponent } from './components/show-topic/show-topic.component
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUserComponent } from './components/admin-user/admin-user.component';
+import { AdminCategoryComponent } from './components/admin-category/admin-category.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: IndexComponent },
@@ -30,26 +31,24 @@ const appRoutes: Routes = [
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	// Admin
-	{ path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/users', component: AdminComponent, canActivate: [AuthGuard] },
 	{ path: 'admin/users/:id', component: AdminUserComponent, canActivate: [AuthGuard] },
+	
+	{ path: 'admin/categories', component: AdminCategoryComponent, canActivate: [AuthGuard] },
 	// Errors
 	{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(
-			appRoutes,
-			{
-    enableTracing: false,
-    relativeLinkResolution: 'legacy'
-}
-			)
-		],
-		exports: [
-			RouterModule
-		],
-		providers: []
-	})
-	export class AppRoutingModule { }
-	
+		RouterModule.forRoot(appRoutes, {
+			enableTracing: false,
+			relativeLinkResolution: 'legacy'
+		})
+	],
+	exports: [
+		RouterModule
+	],
+	providers: []
+})
+export class AppRoutingModule { }

@@ -1,0 +1,88 @@
+<table class="ui celled table">
+	<caption>Category list</caption>
+	<thead>
+		<tr>
+			<th id="title">Title</th>
+			<th id="topics">Topics</th>
+			<th id="posts">Posts</th>
+			<th id="action">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let category of categories">
+			<td headers="title" data-label="Title">{{ category.title }}</td>
+			<td headers="topics" data-label="Topics">{{ category.Topics.length }}</td>
+			<td headers="posts" data-label="Posts">{{ category.Posts.length }}</td>
+			<td headers="action" data-label="Action">
+				<a (click)="edit(category)">
+					<i class="pencil icon" aria-hidden="true"></i>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="ui right aligned grid">
+	<div class="sixteen wide column">
+		<div class="segment">
+			<button class="ui primary button right floated" (click)="create()">Add category</button>
+		</div>
+	</div>
+</div>
+
+<div class="ui modal create-category">
+	<div class="header">Add category</div>
+	<div class="content">
+		<form class="ui large form" #createCategoryForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="category">
+			<div class="ui segment left aligned">
+				<div class="field">
+					<label for="title">Title</label>
+					<div class="ui input">
+						<input type="text" id="title" [(ngModel)]="category.title" name="title" #name="ngModel" required>
+					</div>
+				</div>
+				<div class="field">
+					<label for="description">Description</label>
+					<div class="ui input">
+						<input type="text" id="description" [(ngModel)]="category.description" name="description" #name="ngModel" required>
+					</div>
+				</div>
+				<div class="ui error message" [class.visible]="errors.length">
+					<p *ngFor="let error of errors">
+						{{ error }}
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="actions">
+		<div class="ui primary button approve">Save</div>
+		<div class="ui close button">Cancel</div>
+	</div>
+</div>
+
+<div class="ui modal edit-category">
+	<div class="header">Edit category</div>
+	<div class="content">
+		<form class="ui large form" #editCategoryForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="category">
+			<div class="ui segment left aligned">
+				<div class="field">
+					<label for="title">Title</label>
+					<div class="ui input">
+						<input type="text" id="title" [(ngModel)]="category.title" name="title" #name="ngModel" required>
+					</div>
+				</div>
+				<div class="ui error message" [class.visible]="errors.length">
+					<p *ngFor="let error of errors">
+						{{ error }}
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="actions">
+		<div class="ui primary button approve">Save</div>
+		<div class="ui red button cancel">Delete</div>
+		<div class="ui close button">Cancel</div>
+	</div>
+</div>

@@ -19,7 +19,7 @@ module.exports = {
 			data.roles = JSON.stringify(['USER']);
 			data.session = uniqid();
 			
-			User.create(user).then(user => {
+			User.create(data).then(user => {
 				res.status(200).json({
 					'username': user.username,
 					'session': user.session
@@ -72,7 +72,8 @@ module.exports = {
 	},
 	
 	update(req, res) {
-		
+
+		var userId = req.params.id;
 		var data = req.body;
 		
 		User.update({
@@ -80,7 +81,7 @@ module.exports = {
 			roles: JSON.stringify(data.roles)
 		}, {
 			where: {
-				id: user.id
+				id: userId
 			}
 		}).then(user => {
 			res.status(200).json();

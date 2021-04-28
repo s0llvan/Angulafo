@@ -21,7 +21,7 @@ module.exports= {
 		}}).then(user => {
 			data.authorId = user.id;
 			
-			Post.create(post).then(post => {
+			Post.create(data).then(post => {
 				res.status(200).json(post);
 			}).catch(function(err){
 				res.status(400).json(err.errors)

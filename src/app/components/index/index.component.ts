@@ -18,11 +18,11 @@ export class IndexComponent implements OnInit {
 	
 	ngOnInit() {
 		
-		this.showAllCategories();
+		this.showCategories();
 	}
 	
-	showAllCategories(): void {
-		this.apiService.showAllCategories().subscribe((categories: Category[]) => {
+	showCategories(): void {
+		this.apiService.showCategories().subscribe((categories: Category[]) => {
 			categories.map((category => category.postsCount = category.Topics.reduce((sum, topic) => sum + topic.Posts.length, 0)));
 
 			this.categories = categories;

@@ -35,8 +35,11 @@ app.use(function (req, res, next) {
 app.post('/login', auth.logIn);
 
 // Categories routes
+app.post('/categories', categories.create);
 app.get('/categories', categories.showAll);
 app.get('/categories/:id', categories.show);
+app.put('/categories/:id', categories.update);
+app.delete('/categories/:id', categories.delete);
 
 // Topics routes
 app.get('/topics/:id', topics.show);

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { IndexComponent } from './components/index/index.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +19,7 @@ import { ShowTopicComponent } from './components/show-topic/show-topic.component
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUserComponent } from './components/admin-user/admin-user.component';
+import { AdminCategoryComponent } from './components/admin-category/admin-category.component';
 
 @NgModule({
 	declarations: [
@@ -35,12 +36,14 @@ import { AdminUserComponent } from './components/admin-user/admin-user.component
 		NewPostComponent,
 		AdminComponent,
 		AdminUserComponent,
+		AdminCategoryComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	providers: [
 		ApiService,

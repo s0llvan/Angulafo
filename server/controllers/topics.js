@@ -22,7 +22,7 @@ module.exports= {
 		}}).then(user => {
 			data.authorId = user.id;
 			
-			Topic.create(topic).then(topic => {
+			Topic.create(data).then(topic => {
 				res.status(200).json(topic);
 			}).catch(function(err){
 				res.status(400).json(err.errors)

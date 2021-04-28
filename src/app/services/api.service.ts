@@ -4,6 +4,7 @@ import { User } from './../class/user';
 import { Topic } from './../class/topic';
 import { Observable } from 'rxjs';
 import { Post } from './../class/post';
+import { Category } from '../class/category';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,8 +20,32 @@ export class ApiService {
 		return this.http.get(this.apiUrl + '/categories/' + categoryId);
 	}
 	
-	public showAllCategories(): Observable<Object> {
+	public showCategories(): Observable<Object> {
 		return this.http.get(this.apiUrl + '/categories');
+	}
+
+	public editCategory(category: Category): Observable<Object> {
+		return this.http.put(this.apiUrl + '/categories/' + category.id, category, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public createCategory(category: Category): Observable<Object> {
+		return this.http.post(this.apiUrl + '/categories/', category, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
+	}
+
+	public deleteCategory(category: Category): Observable<Object> {
+		return this.http.delete(this.apiUrl + '/categories/' + category.id, {
+			headers: {
+				'Authorization': this.apiToken
+			}
+		});
 	}
 	
 	public createTopic(topic: Topic): Observable<Object> {

@@ -10,6 +10,19 @@ const User = require('../models/').User;
 
 module.exports = {
 	
+	create(req, res) {
+		
+		var data = req.body;
+
+		Category.create(data).then(category => {
+			res.status(200).json(category);
+		}).catch(function (err) {
+			res.status(400).json([{
+				'message': err.message
+			}])
+		});
+	},
+	
 	showAll(req, res) {
 		
 		Category.findAll({
@@ -71,4 +84,36 @@ module.exports = {
 			res.status(400).json(err.errors);
 		});
 	},
+	
+	update(req, res) {
+		
+		var categoryId = req.params.id;
+		var data = req.body;
+		
+		Category.update({
+			title: data.title
+		}, {
+			where: {
+				id: categoryId
+			}
+		}).then(category => {
+			res.status(200).json(category);
+		}).catch((err) => {
+			res.status(400).json(err.errors);
+		});
+	},
+	
+	delete(req, res) {
+		var categoryId = req.params.id;
+		
+		Category.destroy({
+			where: {
+				id: categoryId
+			}
+		}).then(user => {
+			res.status(200).json();
+		}).catch((err) => {
+			res.status(400).json(err.errors);
+		});
+	}
 }
